@@ -1,3 +1,7 @@
+
+import java.io.File;
+import javax.swing.JFrame;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -14,6 +18,18 @@ public class LoginAdmin extends javax.swing.JFrame {
      * Creates new form LoginAdmin
      */
     public LoginAdmin() {
+        File adminFile = new File("/src/temp/admin.txt");
+        File docFile = new File("/src/temp/doc.txt");
+        CrearAdmin h = new CrearAdmin();
+        
+        //funcion veriicar si los archivos existen
+     if(!adminFile.exists() || !docFile.exists()) {
+      // Abrir otra ventana  
+ 
+      
+     } else {
+    
+     }
         initComponents();
     }
 
