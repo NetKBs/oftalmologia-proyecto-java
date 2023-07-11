@@ -71,8 +71,8 @@ abstract class Persona {
 }
 
 class Doctor extends Persona {
-    String universidad;
-    String especializacion;
+    private String universidad;
+    private String especializacion;
 
     public Doctor(String universidad, String especializacion, String[] nombres, String[] apellidos, String f_nacimiento, String correo, String tlfno, int edad) {
         super(nombres, apellidos, f_nacimiento, correo, tlfno, edad);
@@ -97,8 +97,8 @@ class Doctor extends Persona {
 }
 
 class Cliente extends Persona{
-    String cedula;
-    String direccion;
+    private String cedula;
+    private String direccion;
 
     public Cliente(String cedula, String direccion, String[] nombres, String[] apellidos, String f_nacimiento, String correo, String tlfno, int edad) {
         super(nombres, apellidos, f_nacimiento, correo, tlfno, edad);
