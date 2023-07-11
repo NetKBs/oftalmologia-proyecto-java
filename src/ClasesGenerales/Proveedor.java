@@ -6,12 +6,11 @@ import java.util.ArrayList;
 public class Proveedor {
     private String empresa;
     private String fecha_entrega;
-    private ArrayList<String> lista_productos;
+    private ArrayList<String> lista_productos = new ArrayList<>();
 
-    public Proveedor(String empresa, String fecha_entrega, ArrayList<String> lista_productos) {
+    public Proveedor(String empresa, String fecha_entrega) {
         this.empresa = empresa;
         this.fecha_entrega = fecha_entrega;
-        this.lista_productos = lista_productos;
     }
 
     public String getEmpresa() {
@@ -34,4 +33,12 @@ public class Proveedor {
         this.lista_productos = lista_productos;
     }
     
+    // Agregar productos a lista_productos
+    public void agregarProducto(String producto) {
+        this.lista_productos.add(producto);
+    }
+    // Eliminar producto de lista_productos
+    public void eliminarProducto(String producto) {
+        this.lista_productos.remove(producto);
+    }
 }
