@@ -1,4 +1,5 @@
 
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import javax.swing.JFrame;
@@ -7,7 +8,6 @@ import javax.swing.JFrame;
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-
 /**
  *
  * @author ManuRG
@@ -18,7 +18,7 @@ public class CrearAdmin extends javax.swing.JFrame {
      * Creates new form CrearAdmin
      */
     public CrearAdmin() {
-       
+
         initComponents();
     }
 
@@ -90,36 +90,42 @@ public class CrearAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_AdmintxtActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-     String Admin = Admintxt.getText();
-     UsuDoc a = new UsuDoc();
-     char[] AdminPass = AdminPasstxt.getPassword();
-     String stringpass = new String(AdminPass);
-             
-      try {
+        // File path
+        String file_path = System.getProperty("user.dir") + File.separator + "src" + File.separator + "temp";
+        
+        String admin_user = Admintxt.getText();
+        char[] admin_pass = AdminPasstxt.getPassword();
+        String stringpass = new String(admin_pass);
 
-      // Abrir el archivo en modo escritura
-      FileWriter fw = new FileWriter("/src/Temp/admin.txt");
+        try {
 
-      // Escribir el nombre de usuario y la contraseña al archivo, separados por un espacio
-      fw.write(Admin + " " + stringpass + "\n");
+            // Abrir el archivo en modo escritura
+            FileWriter fw = new FileWriter(file_path + File.separator + "admin.txt");
 
-      // Cerrar el flujo del archivo
-      fw.close();
+            // Escribir el nombre de usuario y la contraseña al archivo, separados por un espacio
+            fw.write(admin_user + "|" + stringpass + "\n");
 
-  } catch (IOException e) {
-      System.out.println("Ocurrió un error al guardar el archivo.");
-      e.printStackTrace();  
-  }        
-             
-   a.setVisible(true);
-   this.setVisible(false);
-   
-   
+            // Cerrar el flujo del archivo
+            fw.close();
+
+        } catch (IOException e) {
+            System.out.println("Ocurrió un error al guardar el archivo.");
+            e.printStackTrace();
+        }
+
+        // Si no existen las credenciales de doctor    
+        if (!new File(file_path+File.separator + "doc.txt").exists()) { 
+            UsuDoc crear_doctor = new UsuDoc();
+            crear_doctor.setVisible(true);
+       
+        } else { // mandar a loguear
+            LoginAdmin login = new LoginAdmin();
+            login.setVisible(true);
+        }
         
-        
-        
-        
-        
+        this.setVisible(false); // close this window
+
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
