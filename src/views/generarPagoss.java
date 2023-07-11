@@ -144,7 +144,7 @@ public class generarPagoss extends javax.swing.JPanel {
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel4.setText("Cliente :");
+        jLabel4.setText("Paciente (ID) :");
 
         jTextField1.setBackground(new java.awt.Color(153, 255, 255));
         jTextField1.setForeground(new java.awt.Color(0, 0, 0));
@@ -168,7 +168,7 @@ public class generarPagoss extends javax.swing.JPanel {
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel6.setText("ID :");
+        jLabel6.setText("Ref :");
 
         jTextField3.setBackground(new java.awt.Color(153, 255, 255));
         jTextField3.setForeground(new java.awt.Color(0, 0, 0));

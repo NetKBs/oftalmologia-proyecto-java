@@ -18,18 +18,7 @@ public class LoginAdmin extends javax.swing.JFrame {
      * Creates new form LoginAdmin
      */
     public LoginAdmin() {
-        File adminFile = new File("/src/temp/admin.txt");
-        File docFile = new File("/src/temp/doc.txt");
-        CrearAdmin h = new CrearAdmin();
-        
-        //funcion veriicar si los archivos existen
-     if(!adminFile.exists() || !docFile.exists()) {
-      // Abrir otra ventana  
- 
-      
-     } else {
     
-     }
         initComponents();
     }
 
