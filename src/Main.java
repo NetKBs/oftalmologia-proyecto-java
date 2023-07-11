@@ -16,9 +16,20 @@ public class Main {
             new File(file_path).mkdirs();
         }
         
-        if (!adminFile.exists() || !adminFile.exists()) {
+        if (!adminFile.exists()) { // credenciales de administrador
+            CrearAdmin crear_admin = new CrearAdmin();
+            crear_admin.setVisible(true);
             
+        } else if (!docFile.exists()) { // credenciales de doctor
+            UsuDoc crear_doctor = new UsuDoc();
+            crear_doctor.setVisible(true);
+       
+        } else { // Mandar a loguear
+            LoginAdmin login = new LoginAdmin();
+            login.setVisible(true);
         }
+            
+       
        
     }
     

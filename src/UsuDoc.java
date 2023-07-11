@@ -1,4 +1,5 @@
 
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
@@ -6,7 +7,6 @@ import java.io.IOException;
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-
 /**
  *
  * @author ManuRG
@@ -73,7 +73,7 @@ public class UsuDoc extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 657, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -88,18 +88,20 @@ public class UsuDoc extends javax.swing.JFrame {
     }//GEN-LAST:event_DoctortxtActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        String Doc = Doctortxt.getText();
-        LoginAdmin b = new LoginAdmin();
-        char[] DocPass = DocPasstxt.getPassword();
-        String stringpass = new String(DocPass);
+        // File path
+        String file_path = System.getProperty("user.dir") + File.separator + "src" + File.separator + "temp";
+        
+        String doc_user = Doctortxt.getText();
+        char[] doc_pass = DocPasstxt.getPassword();
+        String stringpass = new String(doc_pass);
 
         try {
 
             // Abrir el archivo en modo escritura
-            FileWriter fw = new FileWriter("/src/Temp/Doc.txt");
+            FileWriter fw = new FileWriter(file_path + File.separator + "doc.txt");
 
             // Escribir el nombre de usuario y la contraseña al archivo, separados por un espacio
-            fw.write(Doc + " " + stringpass + "\n");
+            fw.write(doc_user + "|" + stringpass + "\n");
 
             // Cerrar el flujo del archivo
             fw.close();
@@ -108,10 +110,18 @@ public class UsuDoc extends javax.swing.JFrame {
             System.out.println("Ocurrió un error al guardar el archivo.");
             e.printStackTrace();
         }
-        
-        b.setVisible(true);
-        this.setVisible(false);
 
+        // Si no existen las credenciales de doctor    
+        if (!new File(file_path + File.separator + "admin.txt").exists()) {
+            CrearAdmin crear_admin = new CrearAdmin();
+            crear_admin.setVisible(true);
+
+        } else { // mandar a loguear
+            LoginAdmin login = new LoginAdmin();
+            login.setVisible(true);
+        }
+
+        this.setVisible(false); // close this window
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
