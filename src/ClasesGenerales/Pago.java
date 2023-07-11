@@ -23,4 +23,8 @@ public class Pago {
         this.cita = cita;
     }
     
+    public boolean procesarPago() {
+        return false;
+    }
+    
 }

@@ -4,6 +4,13 @@
  */
 package views;
 
+import java.awt.Component;
+import java.awt.Container;
+import java.awt.event.ItemEvent;
+import javax.swing.ButtonGroup;
+import javax.swing.JPanel;
+import javax.swing.JRadioButton;
+
 /**
  *
  * @author Inesc28
@@ -15,6 +22,7 @@ public class generarPagoss extends javax.swing.JPanel {
      */
     public generarPagoss() {
         initComponents();
+        radioButtonsEvent();
     }
 
     /**
@@ -27,14 +35,14 @@ public class generarPagoss extends javax.swing.JPanel {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
+        jPanel_metodo_pago = new javax.swing.JPanel();
+        jRadio_pago_movil = new javax.swing.JRadioButton();
+        jRadio_efectivo = new javax.swing.JRadioButton();
         jLabel1 = new javax.swing.JLabel();
-        jPanel3 = new javax.swing.JPanel();
+        jPanel_moneda = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        jRadioButton3 = new javax.swing.JRadioButton();
-        jRadioButton4 = new javax.swing.JRadioButton();
+        jRadio_bolivares = new javax.swing.JRadioButton();
+        jRadio_dolares = new javax.swing.JRadioButton();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
@@ -46,89 +54,89 @@ public class generarPagoss extends javax.swing.JPanel {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        jPanel2.setBackground(new java.awt.Color(102, 255, 255));
+        jPanel_metodo_pago.setBackground(new java.awt.Color(102, 255, 255));
 
-        jRadioButton1.setBackground(new java.awt.Color(102, 255, 255));
-        jRadioButton1.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
-        jRadioButton1.setForeground(new java.awt.Color(0, 0, 0));
-        jRadioButton1.setText("Pago Móvil");
-        jRadioButton1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jRadio_pago_movil.setBackground(new java.awt.Color(102, 255, 255));
+        jRadio_pago_movil.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
+        jRadio_pago_movil.setForeground(new java.awt.Color(0, 0, 0));
+        jRadio_pago_movil.setText("Pago Móvil");
+        jRadio_pago_movil.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        jRadioButton2.setBackground(new java.awt.Color(102, 255, 255));
-        jRadioButton2.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
-        jRadioButton2.setForeground(new java.awt.Color(0, 0, 0));
-        jRadioButton2.setText("Efectivo");
-        jRadioButton2.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jRadio_efectivo.setBackground(new java.awt.Color(102, 255, 255));
+        jRadio_efectivo.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
+        jRadio_efectivo.setForeground(new java.awt.Color(0, 0, 0));
+        jRadio_efectivo.setText("Efectivo");
+        jRadio_efectivo.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Método de Pago");
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        javax.swing.GroupLayout jPanel_metodo_pagoLayout = new javax.swing.GroupLayout(jPanel_metodo_pago);
+        jPanel_metodo_pago.setLayout(jPanel_metodo_pagoLayout);
+        jPanel_metodo_pagoLayout.setHorizontalGroup(
+            jPanel_metodo_pagoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel_metodo_pagoLayout.createSequentialGroup()
                 .addGap(36, 36, 36)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel_metodo_pagoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jRadioButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jRadioButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(jPanel_metodo_pagoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jRadio_pago_movil, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jRadio_efectivo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap(55, Short.MAX_VALUE))
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        jPanel_metodo_pagoLayout.setVerticalGroup(
+            jPanel_metodo_pagoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel_metodo_pagoLayout.createSequentialGroup()
                 .addGap(68, 68, 68)
                 .addComponent(jLabel1)
                 .addGap(50, 50, 50)
-                .addComponent(jRadioButton1)
+                .addComponent(jRadio_pago_movil)
                 .addGap(26, 26, 26)
-                .addComponent(jRadioButton2)
+                .addComponent(jRadio_efectivo)
                 .addContainerGap(179, Short.MAX_VALUE))
         );
 
-        jPanel3.setBackground(new java.awt.Color(0, 204, 204));
+        jPanel_moneda.setBackground(new java.awt.Color(0, 204, 204));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Moneda");
 
-        jRadioButton3.setBackground(new java.awt.Color(0, 204, 204));
-        jRadioButton3.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
-        jRadioButton3.setForeground(new java.awt.Color(0, 0, 0));
-        jRadioButton3.setText("Bolívares");
+        jRadio_bolivares.setBackground(new java.awt.Color(0, 204, 204));
+        jRadio_bolivares.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
+        jRadio_bolivares.setForeground(new java.awt.Color(0, 0, 0));
+        jRadio_bolivares.setText("Bolívares");
 
-        jRadioButton4.setBackground(new java.awt.Color(0, 204, 204));
-        jRadioButton4.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
-        jRadioButton4.setForeground(new java.awt.Color(0, 0, 0));
-        jRadioButton4.setText("Dólares");
+        jRadio_dolares.setBackground(new java.awt.Color(0, 204, 204));
+        jRadio_dolares.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
+        jRadio_dolares.setForeground(new java.awt.Color(0, 0, 0));
+        jRadio_dolares.setText("Dólares");
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
+        javax.swing.GroupLayout jPanel_monedaLayout = new javax.swing.GroupLayout(jPanel_moneda);
+        jPanel_moneda.setLayout(jPanel_monedaLayout);
+        jPanel_monedaLayout.setHorizontalGroup(
+            jPanel_monedaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel_monedaLayout.createSequentialGroup()
                 .addGap(40, 40, 40)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jRadioButton4)
-                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(jRadioButton3, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGroup(jPanel_monedaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jRadio_dolares)
+                    .addGroup(jPanel_monedaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(jRadio_bolivares, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel_monedaLayout.createSequentialGroup()
                             .addComponent(jLabel2)
                             .addGap(13, 13, 13))))
                 .addContainerGap(100, Short.MAX_VALUE))
         );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
+        jPanel_monedaLayout.setVerticalGroup(
+            jPanel_monedaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel_monedaLayout.createSequentialGroup()
                 .addGap(97, 97, 97)
                 .addComponent(jLabel2)
                 .addGap(59, 59, 59)
-                .addComponent(jRadioButton3)
+                .addComponent(jRadio_bolivares)
                 .addGap(28, 28, 28)
-                .addComponent(jRadioButton4)
+                .addComponent(jRadio_dolares)
                 .addContainerGap(114, Short.MAX_VALUE))
         );
 
@@ -182,9 +190,9 @@ public class generarPagoss extends javax.swing.JPanel {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(16, 16, 16)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel_metodo_pago, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel_moneda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -228,9 +236,9 @@ public class generarPagoss extends javax.swing.JPanel {
                 .addContainerGap(23, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jPanel_moneda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel_metodo_pago, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
@@ -258,6 +266,32 @@ public class generarPagoss extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField3ActionPerformed
 
+    // manejar RadioButtons
+    public void radioButtonsEvent() {
+        ButtonGroup metodos_pago = new ButtonGroup();
+        ButtonGroup moneda = new ButtonGroup();
+        
+        // Obtener los hijos de los paneles Metodo de pago y Moneda
+        Component[] metodo_radio_buttons = jPanel_metodo_pago.getComponents();
+        Component[] moneda_radio_buttons = jPanel_moneda.getComponents();
+        
+        // Agregar al grupo de botones correspondiente
+        for (Component radio : metodo_radio_buttons) {
+            // Check if the component is a JRadioButton
+            if (radio instanceof JRadioButton) {
+              metodos_pago.add((JRadioButton) radio);
+            }
+        }
+        // Agregar al grupo de botones correspondiente
+        for (Component radio : moneda_radio_buttons) {
+            // Check if the component is a JRadioButton
+            if (radio instanceof JRadioButton) {
+              moneda.add((JRadioButton) radio);
+            }
+        }
+        
+
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
@@ -268,12 +302,12 @@ public class generarPagoss extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
-    private javax.swing.JRadioButton jRadioButton3;
-    private javax.swing.JRadioButton jRadioButton4;
+    private javax.swing.JPanel jPanel_metodo_pago;
+    private javax.swing.JPanel jPanel_moneda;
+    private javax.swing.JRadioButton jRadio_bolivares;
+    private javax.swing.JRadioButton jRadio_dolares;
+    private javax.swing.JRadioButton jRadio_efectivo;
+    private javax.swing.JRadioButton jRadio_pago_movil;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
