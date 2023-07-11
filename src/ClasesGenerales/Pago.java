@@ -1,8 +1,8 @@
 package ClasesGenerales;
 
 public class Pago {
-    String metodo;
-    Cita cita;
+    private String metodo;
+    private Cita cita;
     
     public Pago(String metodo, Cita cita) {
         this.metodo = metodo;

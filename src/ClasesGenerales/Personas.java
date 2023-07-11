@@ -96,11 +96,11 @@ class Doctor extends Persona {
     
 }
 
-class Cliente extends Persona{
+class Paciente extends Persona{
     private String cedula;
     private String direccion;
 
-    public Cliente(String cedula, String direccion, String[] nombres, String[] apellidos, String f_nacimiento, String correo, String tlfno, int edad) {
+    public Paciente(String cedula, String direccion, String[] nombres, String[] apellidos, String f_nacimiento, String correo, String tlfno, int edad) {
         super(nombres, apellidos, f_nacimiento, correo, tlfno, edad);
         this.cedula = cedula;
         this.direccion = direccion;
