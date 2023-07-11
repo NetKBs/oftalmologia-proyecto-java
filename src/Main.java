@@ -17,11 +17,11 @@ public class Main {
         }
         
         if (!adminFile.exists()) { // credenciales de administrador
-            CrearAdmin crear_admin = new CrearAdmin();
+            CrearAdminUser crear_admin = new CrearAdminUser();
             crear_admin.setVisible(true);
             
         } else if (!docFile.exists()) { // credenciales de doctor
-            UsuDoc crear_doctor = new UsuDoc();
+            CrearDocUser crear_doctor = new CrearDocUser();
             crear_doctor.setVisible(true);
        
         } else { // Mandar a loguear

@@ -12,12 +12,12 @@ import javax.swing.JFrame;
  *
  * @author ManuRG
  */
-public class CrearAdmin extends javax.swing.JFrame {
+public class CrearAdminUser extends javax.swing.JFrame {
 
     /**
      * Creates new form CrearAdmin
      */
-    public CrearAdmin() {
+    public CrearAdminUser() {
 
         initComponents();
     }
@@ -115,7 +115,7 @@ public class CrearAdmin extends javax.swing.JFrame {
 
         // Si no existen las credenciales de doctor    
         if (!new File(file_path+File.separator + "doc.txt").exists()) { 
-            UsuDoc crear_doctor = new UsuDoc();
+            CrearDocUser crear_doctor = new CrearDocUser();
             crear_doctor.setVisible(true);
        
         } else { // mandar a loguear
@@ -145,20 +145,21 @@ public class CrearAdmin extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(CrearAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CrearAdminUser.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(CrearAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CrearAdminUser.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(CrearAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CrearAdminUser.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(CrearAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CrearAdminUser.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new CrearAdmin().setVisible(true);
+                new CrearAdminUser().setVisible(true);
             }
         });
     }

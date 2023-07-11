@@ -11,12 +11,12 @@ import java.io.IOException;
  *
  * @author ManuRG
  */
-public class UsuDoc extends javax.swing.JFrame {
+public class CrearDocUser extends javax.swing.JFrame {
 
     /**
      * Creates new form UsuDoc
      */
-    public UsuDoc() {
+    public CrearDocUser() {
         initComponents();
     }
 
@@ -113,7 +113,7 @@ public class UsuDoc extends javax.swing.JFrame {
 
         // Si no existen las credenciales de doctor    
         if (!new File(file_path + File.separator + "admin.txt").exists()) {
-            CrearAdmin crear_admin = new CrearAdmin();
+            CrearAdminUser crear_admin = new CrearAdminUser();
             crear_admin.setVisible(true);
 
         } else { // mandar a loguear
@@ -141,20 +141,21 @@ public class UsuDoc extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(UsuDoc.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CrearDocUser.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(UsuDoc.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CrearDocUser.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(UsuDoc.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CrearDocUser.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(UsuDoc.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CrearDocUser.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new UsuDoc().setVisible(true);
+                new CrearDocUser().setVisible(true);
             }
         });
     }

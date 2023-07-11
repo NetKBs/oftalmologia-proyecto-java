@@ -276,7 +276,7 @@ public class generarPagoss extends javax.swing.JPanel {
               jTextField2.getText().isEmpty() ||
               jTextField3.getText().isEmpty()) {
 
-              showWarning();  
+                showWarning(); 
 
         } else if (moneda.getSelection() == null) {
               showWarning2();  

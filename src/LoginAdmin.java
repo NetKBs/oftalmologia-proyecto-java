@@ -1,13 +1,17 @@
 
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-
-
 /**
  *
  * @author Inesc28
@@ -18,7 +22,6 @@ public class LoginAdmin extends javax.swing.JFrame {
      * Creates new form LoginAdmin
      */
     public LoginAdmin() {
-    
         initComponents();
     }
 
@@ -35,11 +38,12 @@ public class LoginAdmin extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        input_user = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jPasswordField1 = new javax.swing.JPasswordField();
+        input_pass = new javax.swing.JPasswordField();
+        jButton_login = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
 
@@ -48,36 +52,44 @@ public class LoginAdmin extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
         jPanel2.setBackground(new java.awt.Color(153, 255, 255));
-        jPanel2.setForeground(new java.awt.Color(0, 0, 0));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/inescoro/icons/logo oftal.png"))); // NOI18N
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("CONTRASEÑA");
 
-        jTextField1.setBackground(new java.awt.Color(153, 255, 255));
-        jTextField1.setForeground(new java.awt.Color(102, 102, 102));
-        jTextField1.setBorder(null);
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        input_user.setBackground(new java.awt.Color(153, 255, 255));
+        input_user.setForeground(new java.awt.Color(102, 102, 102));
+        input_user.setBorder(null);
+        input_user.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        input_user.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                input_userActionPerformed(evt);
             }
         });
 
-        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("________________________________________________________");
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("USUARIO");
 
-        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("________________________________________________________");
 
-        jPasswordField1.setBackground(new java.awt.Color(153, 255, 255));
-        jPasswordField1.setForeground(new java.awt.Color(0, 0, 0));
-        jPasswordField1.setBorder(null);
+        input_pass.setBackground(new java.awt.Color(153, 255, 255));
+        input_pass.setBorder(null);
+
+        jButton_login.setBackground(new java.awt.Color(0, 204, 204));
+        jButton_login.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
+        jButton_login.setForeground(new java.awt.Color(0, 0, 0));
+        jButton_login.setIcon(new javax.swing.ImageIcon(getClass().getResource("/inescoro/icons/saliendo.png"))); // NOI18N
+        jButton_login.setText("LOGIN");
+        jButton_login.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        jButton_login.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton_login.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_loginActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -93,7 +105,7 @@ public class LoginAdmin extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(296, 296, 296))
-                    .addComponent(jTextField1)
+                    .addComponent(input_user)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(27, 27, 27))
@@ -102,10 +114,14 @@ public class LoginAdmin extends javax.swing.JFrame {
                         .addGap(296, 296, 296))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jPasswordField1, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(input_pass, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(27, 27, 27)))
                 .addGap(93, 93, 93))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(187, 187, 187)
+                .addComponent(jButton_login, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -115,16 +131,18 @@ public class LoginAdmin extends javax.swing.JFrame {
                 .addGap(94, 94, 94)
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(input_user, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(56, 56, 56)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(input_pass, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(94, 94, 94))
+                .addGap(34, 34, 34)
+                .addComponent(jButton_login, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(19, 19, 19))
         );
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/inescoro/icons/panelofta.png"))); // NOI18N
@@ -175,9 +193,78 @@ public class LoginAdmin extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void input_userActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_input_userActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_input_userActionPerformed
+
+    private void jButton_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_loginActionPerformed
+        // TODO add your handling code here:
+        String file_path = System.getProperty("user.dir") + File.separator + "src" + File.separator + "temp";
+
+        String user = input_user.getText();
+        char[] pass = input_pass.getPassword();
+        String stringpass = new String(pass);
+
+        // Eliminamos espacios en blanco
+        user = user.trim().replace(" ", "");
+        stringpass = stringpass.trim().replace(" ", "");
+
+        if (user.equals("") || stringpass.equals("")) { // Vacio
+            JOptionPane.showMessageDialog(this, "Debe completar todos los campos", "Warning", JOptionPane.WARNING_MESSAGE);
+
+        } else { // Cargamos los datos
+            
+            // File paths
+            String admin_credenciales = file_path + File.separator + "admin.txt";
+            String doc_credenciales = file_path + File.separator + "doc.txt";
+            // Para guardar las credenciales obtenidas
+            String[] admin_data_file = null;
+            String[] doc_data_file = null;
+
+            try (Scanner scan1 = new Scanner(new File(admin_credenciales)); Scanner scan2 = new Scanner(new File(doc_credenciales))) {
+
+                while (scan1.hasNextLine()) { // Credenciales admin
+                    String linea = scan1.nextLine();
+                    String[] datos = linea.split("\\|");
+                    admin_data_file = datos;
+                }
+
+                while (scan2.hasNextLine()) { // Credenciales doc
+                    String linea = scan2.nextLine();
+                    String[] datos = linea.split("\\|");
+                    doc_data_file = datos;
+                }
+
+            } catch (FileNotFoundException ex) {
+                Logger.getLogger(LoginAdmin.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+            // Verificamos credenciales
+            if (admin_data_file[0].equals(user)) { // Admin
+                System.out.println(admin_data_file[1] + " " + stringpass);
+                if (admin_data_file[1].equals(stringpass)) {
+                    AdminPanel admin_panel = new AdminPanel();
+                    admin_panel.setVisible(true);
+                } else {
+                    JOptionPane.showMessageDialog(this, "Contraseña incorrecta", "Warning", JOptionPane.WARNING_MESSAGE);
+                }
+
+            } else if (doc_data_file[0].equals(user)) { // Doctor
+                if (doc_data_file[1].equals(stringpass)) {
+                    System.out.println("Entraste al panel de doctor. Aqui falta codigo !");
+                    // Llamada del doctor panel aquí ....
+                } else {
+                    JOptionPane.showMessageDialog(this, "Contraseña incorrecta", "Warning", JOptionPane.WARNING_MESSAGE);
+                }
+                
+            } else {
+                JOptionPane.showMessageDialog(this, "No existe ese usuario", "Warning", JOptionPane.WARNING_MESSAGE);
+            }
+            
+            // Cerramos ventana
+            this.setVisible(false);
+        }
+    }//GEN-LAST:event_jButton_loginActionPerformed
 
     /**
      * @param args the command line arguments
@@ -215,6 +302,9 @@ public class LoginAdmin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPasswordField input_pass;
+    private javax.swing.JTextField input_user;
+    private javax.swing.JButton jButton_login;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -224,7 +314,5 @@ public class LoginAdmin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPasswordField jPasswordField1;
-    private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }
