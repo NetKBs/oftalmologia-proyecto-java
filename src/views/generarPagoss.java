@@ -8,6 +8,7 @@ import java.awt.Component;
 import java.awt.Container;
 import java.awt.event.ItemEvent;
 import javax.swing.ButtonGroup;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 
@@ -16,7 +17,8 @@ import javax.swing.JRadioButton;
  * @author Inesc28
  */
 public class generarPagoss extends javax.swing.JPanel {
-
+  ButtonGroup moneda;
+  ButtonGroup metodos_pago;
     /**
      * Creates new form generarPagoss
      */
@@ -58,18 +60,15 @@ public class generarPagoss extends javax.swing.JPanel {
 
         jRadio_pago_movil.setBackground(new java.awt.Color(102, 255, 255));
         jRadio_pago_movil.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
-        jRadio_pago_movil.setForeground(new java.awt.Color(0, 0, 0));
         jRadio_pago_movil.setText("Pago Móvil");
         jRadio_pago_movil.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         jRadio_efectivo.setBackground(new java.awt.Color(102, 255, 255));
         jRadio_efectivo.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
-        jRadio_efectivo.setForeground(new java.awt.Color(0, 0, 0));
         jRadio_efectivo.setText("Efectivo");
         jRadio_efectivo.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Método de Pago");
 
         javax.swing.GroupLayout jPanel_metodo_pagoLayout = new javax.swing.GroupLayout(jPanel_metodo_pago);
@@ -100,17 +99,14 @@ public class generarPagoss extends javax.swing.JPanel {
         jPanel_moneda.setBackground(new java.awt.Color(0, 204, 204));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Moneda");
 
         jRadio_bolivares.setBackground(new java.awt.Color(0, 204, 204));
         jRadio_bolivares.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
-        jRadio_bolivares.setForeground(new java.awt.Color(0, 0, 0));
         jRadio_bolivares.setText("Bolívares");
 
         jRadio_dolares.setBackground(new java.awt.Color(0, 204, 204));
         jRadio_dolares.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
-        jRadio_dolares.setForeground(new java.awt.Color(0, 0, 0));
         jRadio_dolares.setText("Dólares");
 
         javax.swing.GroupLayout jPanel_monedaLayout = new javax.swing.GroupLayout(jPanel_moneda);
@@ -143,11 +139,9 @@ public class generarPagoss extends javax.swing.JPanel {
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/inescoro/icons/caja.png"))); // NOI18N
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("Paciente (ID) :");
 
         jTextField1.setBackground(new java.awt.Color(153, 255, 255));
-        jTextField1.setForeground(new java.awt.Color(0, 0, 0));
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField1ActionPerformed(evt);
@@ -155,11 +149,9 @@ public class generarPagoss extends javax.swing.JPanel {
         });
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("Monto :");
 
         jTextField2.setBackground(new java.awt.Color(153, 255, 255));
-        jTextField2.setForeground(new java.awt.Color(0, 0, 0));
         jTextField2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField2ActionPerformed(evt);
@@ -167,11 +159,9 @@ public class generarPagoss extends javax.swing.JPanel {
         });
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("Ref :");
 
         jTextField3.setBackground(new java.awt.Color(153, 255, 255));
-        jTextField3.setForeground(new java.awt.Color(0, 0, 0));
         jTextField3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField3ActionPerformed(evt);
@@ -183,6 +173,11 @@ public class generarPagoss extends javax.swing.JPanel {
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("PROCESAR PAGO");
         jButton1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -266,10 +261,41 @@ public class generarPagoss extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField3ActionPerformed
 
+     public void showWarning() {
+      JOptionPane.showMessageDialog(this, "Debe completar todos los campos", "Warning", JOptionPane.WARNING_MESSAGE);  
+  }
+  public void showWarning2() {
+      JOptionPane.showMessageDialog(this, "Debe de seleccionar una moneda", "Warning", JOptionPane.WARNING_MESSAGE);  
+  }
+  public void showWarning3() {
+      JOptionPane.showMessageDialog(this, "Debe de seleccionar un metodo de pago ", "Warning", JOptionPane.WARNING_MESSAGE);  
+  }
+  
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+            if (jTextField1.getText().isEmpty() || 
+              jTextField2.getText().isEmpty() ||
+              jTextField3.getText().isEmpty()) {
+
+              showWarning();  
+
+        } else if (moneda.getSelection() == null) {
+              showWarning2();  
+        } else if (metodos_pago.getSelection()== null){
+
+           showWarning3();
+
+        }else{
+            
+            // Process payment... 
+        }
+           
+    
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     // manejar RadioButtons
     public void radioButtonsEvent() {
-        ButtonGroup metodos_pago = new ButtonGroup();
-        ButtonGroup moneda = new ButtonGroup();
+         metodos_pago = new ButtonGroup();
+         moneda = new ButtonGroup();
         
         // Obtener los hijos de los paneles Metodo de pago y Moneda
         Component[] metodo_radio_buttons = jPanel_metodo_pago.getComponents();
