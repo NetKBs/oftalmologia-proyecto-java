@@ -99,6 +99,7 @@ public class Pago {
                 PrintWriter writer = new PrintWriter(file_path);
                 writer.append(ref + "|" + moneda + "|" + monto + "|" + metodo + "|" + cita_id + "\n");
                 writer.close();
+               
             }
 
             return true;
