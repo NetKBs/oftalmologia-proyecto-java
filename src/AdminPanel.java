@@ -9,12 +9,12 @@ import views.panelPrincipal;
  *
  * @author Inesc28
  */
-public class pdesign extends javax.swing.JFrame {
+public class AdminPanel extends javax.swing.JFrame {
 
     /**
      * Creates new form pdesign
      */
-    public pdesign() {
+    public AdminPanel() {
         initComponents();
         setResizable(false);
         
@@ -323,7 +323,10 @@ public class pdesign extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton10ActionPerformed
 
     private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
-        // TODO add your handling code here:
+       LoginAdmin salida = new LoginAdmin();
+       salida.setVisible(true);
+       this.setVisible(false);
+       
     }//GEN-LAST:event_jButton11ActionPerformed
 
     /**
@@ -343,20 +346,21 @@ public class pdesign extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(pdesign.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AdminPanel.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(pdesign.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AdminPanel.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(pdesign.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AdminPanel.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(pdesign.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AdminPanel.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new pdesign().setVisible(true);
+                new AdminPanel().setVisible(true);
             }
         });
     }
