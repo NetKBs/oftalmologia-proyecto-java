@@ -70,11 +70,9 @@ public class panelCitas extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        tabla.setColumnSelectionAllowed(true);
         tabla.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         tabla.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(tabla);
-        tabla.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
 
         jButton1.setBackground(new java.awt.Color(102, 102, 255));
         jButton1.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
@@ -165,8 +163,23 @@ public class panelCitas extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        int[] rows = tabla.getSelectedRows();
+
+        if (rows.length != 0) { //No vacio
+            // Obtenemos valores
+            for (int row : rows) {
+                // Obtenemos ID
+                Object id = tabla.getValueAt(row, 0);
+                // Eliminamos
+                Consultorio.instance.eliminarCitaPorId((int)id);
+            }
+            // Refrescamos
+            updateTable();
+        }
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -221,7 +234,7 @@ public class panelCitas extends javax.swing.JPanel {
             // Agregar la fila al modelo de datos
             Object[] row = {id, horario, motivo, paciente, correo, telefono};
             model.addRow(row);
-  
+
         }
     }
 
