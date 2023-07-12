@@ -334,7 +334,10 @@ public class AdminPanel extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton10ActionPerformed
 
     private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
-        // TODO add your handling code here:
+       LoginAdmin salida = new LoginAdmin();
+       salida.setVisible(true);
+       this.setVisible(false);
+       
     }//GEN-LAST:event_jButton11ActionPerformed
 
     /**
