@@ -12,6 +12,7 @@ import ClasesGenerales.Consultorio;
 import ClasesGenerales.Cita;
 import java.awt.event.WindowEvent;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -178,6 +179,21 @@ public class panelCitas extends javax.swing.JPanel {
             }
             // Refrescamos
             updateTable();
+            
+        } else { // Si está vacío la seleccion permitir ingresar id manual
+            String id = JOptionPane.showInputDialog("ID a eliminar: ");
+            if (id != null) {
+                boolean resultado = Consultorio.instance.eliminarCitaPorId(Integer.parseInt(id));
+                
+                if (resultado == false) {
+                    JOptionPane.showMessageDialog(null, "No se encontró una cita con ese ID");
+                } else {
+                    JOptionPane.showMessageDialog(null, "Elimnacion exitosa");
+                    updateTable();
+                }
+                        
+            }
+            
         }
 
     }//GEN-LAST:event_jButton1ActionPerformed

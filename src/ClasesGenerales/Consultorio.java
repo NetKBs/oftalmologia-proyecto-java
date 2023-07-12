@@ -34,8 +34,9 @@ public class Consultorio {
         this.citas_activas.add(cita);
     }
 
-    public void eliminarCitaPorId(int cita_id) {
+    public boolean eliminarCitaPorId(int cita_id) {
         int index = -1;
+        
         // Verificar si existe
         for (int i = 0; i < citas_activas.size(); i++) {
             if (citas_activas.get(i).getId() == cita_id) {
@@ -47,8 +48,12 @@ public class Consultorio {
         if (index != -1) {
             // Sólo eliminar si existe
             this.citas_activas.remove(index);
+            return true; // confirmar eliminación
+            
+        } else {
+            return false;
         }
-        
+     
     }
 
     // Para confirmar una cita 
