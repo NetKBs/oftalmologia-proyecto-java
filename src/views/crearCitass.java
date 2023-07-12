@@ -9,6 +9,9 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
+import ClasesGenerales.Paciente;
+import ClasesGenerales.Cita;
+import ClasesGenerales.Consultorio;
 /**
  *
  * @author Inesc28
@@ -243,8 +246,11 @@ public class crearCitass extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "Debe completar todos los campos", "Warning", JOptionPane.WARNING_MESSAGE);
         } else {
             // Utilizar los datos...
-            
+            Paciente paciente = new Paciente(nombres.getText(), apellidos.getText(), correo.getText(), telefono.getText(), Integer.parseInt(edad.getText()));
+            Cita cita = new Cita(motivo.getText(), horario.getText(), paciente);
+            Consultorio.instance.agregarCita(cita);
         }
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void apellidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_apellidosActionPerformed

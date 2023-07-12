@@ -1,9 +1,14 @@
 
 import java.io.File;
+import ClasesGenerales.Consultorio;
 
 public class Main {
 
     public static void main(String[] args) {
+
+        // Pre-inicializamos el consultorio
+        //....
+        
         String slice = File.separator;
         String file_path = System.getProperty("user.dir") + slice + "src" + slice + "temp";
         
