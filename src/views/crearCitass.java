@@ -12,6 +12,9 @@ import javax.swing.JTextField;
 import ClasesGenerales.Paciente;
 import ClasesGenerales.Cita;
 import ClasesGenerales.Consultorio;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 /**
  *
  * @author Inesc28
@@ -23,6 +26,7 @@ public class crearCitass extends javax.swing.JPanel {
      */
     public crearCitass() {
         initComponents();
+
     }
 
     /**
@@ -49,7 +53,7 @@ public class crearCitass extends javax.swing.JPanel {
         telefono = new javax.swing.JTextField();
         motivo = new javax.swing.JTextField();
         horario = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -129,14 +133,14 @@ public class crearCitass extends javax.swing.JPanel {
             }
         });
 
-        jButton1.setBackground(new java.awt.Color(102, 102, 255));
-        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("CREAR");
-        jButton1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jButton2.setBackground(new java.awt.Color(102, 102, 255));
+        jButton2.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(255, 255, 255));
+        jButton2.setText("CREAR");
+        jButton2.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jButton2ActionPerformed(evt);
             }
         });
 
@@ -163,11 +167,12 @@ public class crearCitass extends javax.swing.JPanel {
                     .addComponent(telefono)
                     .addComponent(motivo)
                     .addComponent(horario, javax.swing.GroupLayout.DEFAULT_SIZE, 446, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(597, Short.MAX_VALUE)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(122, 122, 122))
+                .addContainerGap(228, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                    .addContainerGap(607, Short.MAX_VALUE)
+                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(112, 112, 112)))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -200,9 +205,12 @@ public class crearCitass extends javax.swing.JPanel {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel7)
                     .addComponent(horario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(55, 55, 55)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(52, Short.MAX_VALUE))
+                .addContainerGap(153, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                    .addContainerGap(399, Short.MAX_VALUE)
+                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(42, 42, 42)))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -229,12 +237,16 @@ public class crearCitass extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_horarioActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void apellidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_apellidosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_apellidosActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         ArrayList<String> inputs = new ArrayList<>();
 
         Component[] textFields = {nombres, apellidos, edad, telefono, correo, motivo, horario};
-       
+
         // Obtenemos los datos de cada JTextField
         for (Component textField : textFields) {
             JTextField field = (JTextField) textField;
@@ -249,13 +261,20 @@ public class crearCitass extends javax.swing.JPanel {
             Paciente paciente = new Paciente(nombres.getText(), apellidos.getText(), correo.getText(), telefono.getText(), Integer.parseInt(edad.getText()));
             Cita cita = new Cita(motivo.getText(), horario.getText(), paciente);
             Consultorio.instance.agregarCita(cita);
-        }
-        
-    }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void apellidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_apellidosActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_apellidosActionPerformed
+            // limpiamos inputs
+            nombres.setText("");
+            apellidos.setText("");
+            correo.setText("");
+            telefono.setText("");
+            edad.setText("");
+            motivo.setText("");
+            horario.setText("");
+
+            JOptionPane.showMessageDialog(this, "Cita creada", "Importante", JOptionPane.WARNING_MESSAGE);
+
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -263,7 +282,7 @@ public class crearCitass extends javax.swing.JPanel {
     private javax.swing.JTextField correo;
     private javax.swing.JTextField edad;
     private javax.swing.JTextField horario;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

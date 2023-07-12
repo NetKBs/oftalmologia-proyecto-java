@@ -156,6 +156,7 @@
                     <BevelBorder/>
                   </Border>
                 </Property>
+                <Property name="name" type="java.lang.String" value="Pago M&#xf3;vil" noResource="true"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JRadioButton" name="jRadio_efectivo">
@@ -172,6 +173,7 @@
                     <BevelBorder/>
                   </Border>
                 </Property>
+                <Property name="name" type="java.lang.String" value="Efectivo" noResource="true"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel1">
@@ -242,6 +244,7 @@
                   <Font name="Segoe UI" size="15" style="1"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Bol&#xed;vares"/>
+                <Property name="name" type="java.lang.String" value="Bol&#xed;vares" noResource="true"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JRadioButton" name="jRadio_dolares">
@@ -253,6 +256,7 @@
                   <Font name="Segoe UI" size="15" style="1"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="D&#xf3;lares"/>
+                <Property name="name" type="java.lang.String" value="D&#xf3;lares" noResource="true"/>
               </Properties>
             </Component>
           </SubComponents>
