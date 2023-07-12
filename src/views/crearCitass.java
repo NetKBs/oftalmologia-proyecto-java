@@ -249,6 +249,15 @@ public class crearCitass extends javax.swing.JPanel {
             Paciente paciente = new Paciente(nombres.getText(), apellidos.getText(), correo.getText(), telefono.getText(), Integer.parseInt(edad.getText()));
             Cita cita = new Cita(motivo.getText(), horario.getText(), paciente);
             Consultorio.instance.agregarCita(cita);
+            
+            // limpiamos inputs
+            nombres.setText(""); apellidos.setText("");
+            correo.setText(""); telefono.setText("");
+            edad.setText(""); motivo.setText("");
+            horario.setText("");
+            
+            JOptionPane.showMessageDialog(this, "Cita creada", "Importante", JOptionPane.WARNING_MESSAGE);
+
         }
         
     }//GEN-LAST:event_jButton1ActionPerformed

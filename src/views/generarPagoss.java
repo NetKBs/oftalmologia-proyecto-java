@@ -6,11 +6,16 @@ package views;
 
 import ClasesGenerales.Consultorio;
 import ClasesGenerales.Cita;
+import ClasesGenerales.Pago;
 import java.awt.Component;
 import java.awt.Container;
 import java.awt.event.ItemEvent;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ButtonGroup;
+import javax.swing.ButtonModel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
@@ -67,11 +72,13 @@ public class generarPagoss extends javax.swing.JPanel {
         jRadio_pago_movil.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
         jRadio_pago_movil.setText("Pago Móvil");
         jRadio_pago_movil.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jRadio_pago_movil.setName("Pago Móvil"); // NOI18N
 
         jRadio_efectivo.setBackground(new java.awt.Color(102, 255, 255));
         jRadio_efectivo.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
         jRadio_efectivo.setText("Efectivo");
         jRadio_efectivo.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jRadio_efectivo.setName("Efectivo"); // NOI18N
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setText("Método de Pago");
@@ -109,10 +116,12 @@ public class generarPagoss extends javax.swing.JPanel {
         jRadio_bolivares.setBackground(new java.awt.Color(0, 204, 204));
         jRadio_bolivares.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
         jRadio_bolivares.setText("Bolívares");
+        jRadio_bolivares.setName("Bolívares"); // NOI18N
 
         jRadio_dolares.setBackground(new java.awt.Color(0, 204, 204));
         jRadio_dolares.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
         jRadio_dolares.setText("Dólares");
+        jRadio_dolares.setName("Dólares"); // NOI18N
 
         javax.swing.GroupLayout jPanel_monedaLayout = new javax.swing.GroupLayout(jPanel_moneda);
         jPanel_moneda.setLayout(jPanel_monedaLayout);
@@ -292,25 +301,51 @@ public class generarPagoss extends javax.swing.JPanel {
             showWarning3();
 
         } else {
-            // Verificar si existe una cita con el ID indicado
+            // Procesamos el pago
+      
             
-            ArrayList<Cita> citas = Consultorio.instance.getCitas_activas();
-            int index = -1;
-
-            for (Cita cita: citas) {
-                if (cita.getId() == Integer.parseInt(cita_id.getText())) {
-                    index = citas.indexOf(cita);
-                    break;
+            // Obtenemos el RadioButton seleccionado
+            Component[] metodo_radio_buttons = jPanel_metodo_pago.getComponents();
+            Component[] moneda_radio_buttons = jPanel_moneda.getComponents(); 
+            String metodo = "";
+            String moneda = "";
+            
+            for (Component radio : metodo_radio_buttons) { // Obtenemos metodo
+                if (radio instanceof JRadioButton && ((JRadioButton)radio).isSelected()) {
+                    JRadioButton selectedButton = (JRadioButton) radio;
+                    String texto = selectedButton.getName();
+                    metodo = texto;
+                    break;            
                 }
             }
             
-            if (index == -1) {
-                JOptionPane.showMessageDialog(this, "No se encontró la cita con respecto al ID proporcionado", "Warning", JOptionPane.WARNING_MESSAGE);
-
-            } else {
-                citas.get(index).setEstado(true); // verificar pago
-                Consultorio.instance.setCitasActivas(citas);
+            for (Component radio : moneda_radio_buttons) { // Obtenemos moneda
+                if (radio instanceof JRadioButton && ((JRadioButton)radio).isSelected()) {
+                    JRadioButton selectedButton = (JRadioButton) radio;
+                    String texto = selectedButton.getName();
+                    moneda = texto;
+                    break;            
+                }
             }
+            
+            // Verificar
+            Pago pago = new Pago(metodo, moneda, Integer.parseInt(cita_id.getText()), Integer.parseInt(monto.getText()), referencia.getText());
+
+            try {
+                if (!pago.procesarPago()) {
+                    JOptionPane.showMessageDialog(this, "No se encontró la cita con respecto al ID proporcionado", "Warning", JOptionPane.WARNING_MESSAGE);
+                    
+                } else {
+                    JOptionPane.showMessageDialog(this, "Pago registrado", "Importante", JOptionPane.WARNING_MESSAGE);
+                }
+            } catch (IOException ex) {
+                Logger.getLogger(generarPagoss.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+            // Limpiamos inputs
+            cita_id.setText("");
+            referencia.setText("");
+            monto.setText("");
         }
 
 
