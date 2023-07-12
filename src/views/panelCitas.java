@@ -164,36 +164,40 @@ public class panelCitas extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    
+
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         int[] rows = tabla.getSelectedRows();
 
         if (rows.length != 0) { //No vacio
-            // Obtenemos valores
-            for (int row : rows) {
-                // Obtenemos ID
-                Object id = tabla.getValueAt(row, 0);
-                // Eliminamos
-                Consultorio.instance.eliminarCitaPorId((int)id);
+            int confirmacion = JOptionPane.showConfirmDialog(null, "Seguro quiere eliminar?");
+
+            if (confirmacion == 0) { // Se desea eliminar
+                // Obtenemos valores
+                for (int row : rows) {
+                    // Obtenemos ID
+                    Object id = tabla.getValueAt(row, 0);
+                    // Eliminamos
+                    Consultorio.instance.eliminarCitaPorId((int) id);
+                }
+                // Refrescamos
+                updateTable();
             }
-            // Refrescamos
-            updateTable();
-            
+
         } else { // Si está vacío la seleccion permitir ingresar id manual
             String id = JOptionPane.showInputDialog("ID a eliminar: ");
             if (id != null) {
                 boolean resultado = Consultorio.instance.eliminarCitaPorId(Integer.parseInt(id));
-                
+
                 if (resultado == false) {
                     JOptionPane.showMessageDialog(null, "No se encontró una cita con ese ID");
                 } else {
                     JOptionPane.showMessageDialog(null, "Elimnacion exitosa");
                     updateTable();
                 }
-                        
+
             }
-            
+
         }
 
     }//GEN-LAST:event_jButton1ActionPerformed
