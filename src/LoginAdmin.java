@@ -244,7 +244,7 @@ public class LoginAdmin extends javax.swing.JFrame {
             if (admin_data_file[0].equals(user)) { // Admin
                 
                 System.out.println(admin_data_file[1] + " " + stringpass);
-                
+  
                 if (admin_data_file[1].equals(stringpass)) {
                     AdminPanel admin_panel = new AdminPanel();
                     admin_panel.setVisible(true);
@@ -255,8 +255,9 @@ public class LoginAdmin extends javax.swing.JFrame {
 
             } else if (doc_data_file[0].equals(user)) { // Doctor
                 if (doc_data_file[1].equals(stringpass)) {
-                    System.out.println("Entraste al panel de doctor. Aqui falta codigo !");
-                    // Llamada del doctor panel aquí ....
+                    
+                    AdminPanelMedico admin_panel_medico = new AdminPanelMedico();
+                    admin_panel_medico.setVisible(true);
                     
                 } else {
                     JOptionPane.showMessageDialog(this, "Contraseña incorrecta", "Warning", JOptionPane.WARNING_MESSAGE);
