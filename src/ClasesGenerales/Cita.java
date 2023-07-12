@@ -8,6 +8,7 @@ public class Cita {
     private String motivo;
     private String horario; // dd/mm/yy-hh/mm
     private Paciente paciente;
+    private boolean estado = false; // pago o no
 
     public Cita(String motivo, String horario, Paciente paciente) {
         this.id = nextId;
@@ -33,6 +34,10 @@ public class Cita {
      public Paciente getPaciente() {
         return paciente;
     }
+    
+    public boolean getEstado() {
+        return estado;
+    }
 
     public void setMotivo(String motivo) {
         this.motivo = motivo;
@@ -45,6 +50,9 @@ public class Cita {
         this.paciente = paciente;
     }
     
+    public void setEstado(boolean estado) {
+        this.estado = estado;
+    }
     
     
 }

@@ -2,13 +2,13 @@
 package ClasesGenerales;
 
 public class Paciente {
-    private String[] nombres; // nombre1, nombre2
-    private String[] apellidos; // apellido1, apellido2
+    private String nombres; // nombre1, nombre2
+    private String apellidos; // apellido1, apellido2
     private String correo;
     private String tlfno;
     private int edad;
 
-    public Paciente(String[] nombres, String[] apellidos, String correo, String tlfno, int edad) {
+    public Paciente(String nombres, String apellidos, String correo, String tlfno, int edad) {
         this.nombres = nombres;
         this.apellidos = apellidos;
         this.correo = correo;
@@ -17,11 +17,11 @@ public class Paciente {
     }
     
     // Getters
-    public String[] getNombres() {
+    public String getNombres() {
         return nombres;
     }
 
-    public String[] getApellidos() {
+    public String getApellidos() {
         return apellidos;
     }
 
@@ -39,11 +39,11 @@ public class Paciente {
     }
     
     // Setters
-    public void setNombres(String[] nombres) {
+    public void setNombres(String nombres) {
         this.nombres = nombres;
     }
 
-    public void setApellidos(String[] apellidos) {
+    public void setApellidos(String apellidos) {
         this.apellidos = apellidos;
     }
 

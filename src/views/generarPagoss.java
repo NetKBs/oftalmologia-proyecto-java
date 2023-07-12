@@ -4,9 +4,12 @@
  */
 package views;
 
+import ClasesGenerales.Consultorio;
+import ClasesGenerales.Cita;
 import java.awt.Component;
 import java.awt.Container;
 import java.awt.event.ItemEvent;
+import java.util.ArrayList;
 import javax.swing.ButtonGroup;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -17,8 +20,10 @@ import javax.swing.JRadioButton;
  * @author Inesc28
  */
 public class generarPagoss extends javax.swing.JPanel {
-  ButtonGroup moneda;
-  ButtonGroup metodos_pago;
+
+    ButtonGroup moneda;
+    ButtonGroup metodos_pago;
+
     /**
      * Creates new form generarPagoss
      */
@@ -47,11 +52,11 @@ public class generarPagoss extends javax.swing.JPanel {
         jRadio_dolares = new javax.swing.JRadioButton();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        cita_id = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        referencia = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
+        monto = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
@@ -139,32 +144,32 @@ public class generarPagoss extends javax.swing.JPanel {
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/inescoro/icons/caja.png"))); // NOI18N
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
-        jLabel4.setText("Paciente (ID) :");
+        jLabel4.setText("Cita (ID) :");
 
-        jTextField1.setBackground(new java.awt.Color(153, 255, 255));
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        cita_id.setBackground(new java.awt.Color(153, 255, 255));
+        cita_id.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                cita_idActionPerformed(evt);
             }
         });
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
         jLabel5.setText("Monto :");
 
-        jTextField2.setBackground(new java.awt.Color(153, 255, 255));
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        referencia.setBackground(new java.awt.Color(153, 255, 255));
+        referencia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+                referenciaActionPerformed(evt);
             }
         });
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
         jLabel6.setText("Ref :");
 
-        jTextField3.setBackground(new java.awt.Color(153, 255, 255));
-        jTextField3.addActionListener(new java.awt.event.ActionListener() {
+        monto.setBackground(new java.awt.Color(153, 255, 255));
+        monto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField3ActionPerformed(evt);
+                montoActionPerformed(evt);
             }
         });
 
@@ -197,10 +202,10 @@ public class generarPagoss extends javax.swing.JPanel {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(69, 69, 69)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(cita_id, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel4)
-                                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(monto, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(referencia, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel6)
                                     .addComponent(jLabel5))))
                         .addContainerGap(74, Short.MAX_VALUE))
@@ -217,15 +222,15 @@ public class generarPagoss extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel4)
                 .addGap(12, 12, 12)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(cita_id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(monto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(referencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(29, 29, 29)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(23, Short.MAX_VALUE))
@@ -249,77 +254,96 @@ public class generarPagoss extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void cita_idActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cita_idActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_cita_idActionPerformed
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+    private void referenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_referenciaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    }//GEN-LAST:event_referenciaActionPerformed
 
-    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
+    private void montoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_montoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField3ActionPerformed
+    }//GEN-LAST:event_montoActionPerformed
 
-     public void showWarning() {
-      JOptionPane.showMessageDialog(this, "Debe completar todos los campos", "Warning", JOptionPane.WARNING_MESSAGE);  
-  }
-  public void showWarning2() {
-      JOptionPane.showMessageDialog(this, "Debe de seleccionar una moneda", "Warning", JOptionPane.WARNING_MESSAGE);  
-  }
-  public void showWarning3() {
-      JOptionPane.showMessageDialog(this, "Debe de seleccionar un metodo de pago ", "Warning", JOptionPane.WARNING_MESSAGE);  
-  }
-  
+    public void showWarning() {
+        JOptionPane.showMessageDialog(this, "Debe completar todos los campos", "Warning", JOptionPane.WARNING_MESSAGE);
+    }
+
+    public void showWarning2() {
+        JOptionPane.showMessageDialog(this, "Debe de seleccionar una moneda", "Warning", JOptionPane.WARNING_MESSAGE);
+    }
+
+    public void showWarning3() {
+        JOptionPane.showMessageDialog(this, "Debe de seleccionar un metodo de pago ", "Warning", JOptionPane.WARNING_MESSAGE);
+    }
+
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-            if (jTextField1.getText().isEmpty() || 
-              jTextField2.getText().isEmpty() ||
-              jTextField3.getText().isEmpty()) {
+        if (cita_id.getText().isEmpty()
+                || referencia.getText().isEmpty()
+                || monto.getText().isEmpty()) {
 
-                showWarning(); 
+            showWarning();
 
         } else if (moneda.getSelection() == null) {
-              showWarning2();  
-        } else if (metodos_pago.getSelection()== null){
+            showWarning2();
+        } else if (metodos_pago.getSelection() == null) {
 
-           showWarning3();
+            showWarning3();
 
-        }else{
+        } else {
+            // Verificar si existe una cita con el ID indicado
             
-            // Process payment... 
+            ArrayList<Cita> citas = Consultorio.instance.getCitas_activas();
+            int index = -1;
+
+            for (Cita cita: citas) {
+                if (cita.getId() == Integer.parseInt(cita_id.getText())) {
+                    index = citas.indexOf(cita);
+                    break;
+                }
+            }
+            
+            if (index == -1) {
+                JOptionPane.showMessageDialog(this, "No se encontró la cita con respecto al ID proporcionado", "Warning", JOptionPane.WARNING_MESSAGE);
+
+            } else {
+                citas.get(index).setEstado(true); // verificar pago
+                Consultorio.instance.setCitasActivas(citas);
+            }
         }
-           
-    
+
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     // manejar RadioButtons
     public void radioButtonsEvent() {
-         metodos_pago = new ButtonGroup();
-         moneda = new ButtonGroup();
-        
+        metodos_pago = new ButtonGroup();
+        moneda = new ButtonGroup();
+
         // Obtener los hijos de los paneles Metodo de pago y Moneda
         Component[] metodo_radio_buttons = jPanel_metodo_pago.getComponents();
         Component[] moneda_radio_buttons = jPanel_moneda.getComponents();
-        
+
         // Agregar al grupo de botones correspondiente
         for (Component radio : metodo_radio_buttons) {
             // Check if the component is a JRadioButton
             if (radio instanceof JRadioButton) {
-              metodos_pago.add((JRadioButton) radio);
+                metodos_pago.add((JRadioButton) radio);
             }
         }
         // Agregar al grupo de botones correspondiente
         for (Component radio : moneda_radio_buttons) {
             // Check if the component is a JRadioButton
             if (radio instanceof JRadioButton) {
-              moneda.add((JRadioButton) radio);
+                moneda.add((JRadioButton) radio);
             }
         }
-        
 
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField cita_id;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -334,8 +358,7 @@ public class generarPagoss extends javax.swing.JPanel {
     private javax.swing.JRadioButton jRadio_dolares;
     private javax.swing.JRadioButton jRadio_efectivo;
     private javax.swing.JRadioButton jRadio_pago_movil;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField monto;
+    private javax.swing.JTextField referencia;
     // End of variables declaration//GEN-END:variables
 }

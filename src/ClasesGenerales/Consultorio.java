@@ -47,5 +47,9 @@ public class Consultorio {
         return citas_finalizadas;
     }
     
+    public void setCitasActivas(ArrayList<Cita> citas) {
+        this.citas_activas = citas;
+    }
+    
  
 }
