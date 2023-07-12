@@ -11,7 +11,10 @@ import javax.swing.JPanel;
 import ClasesGenerales.Consultorio;
 import ClasesGenerales.Cita;
 import java.awt.event.WindowEvent;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -180,6 +183,12 @@ public class panelCitas extends javax.swing.JPanel {
                     // Eliminamos
                     Consultorio.instance.eliminarCitaPorId((int) id);
                 }
+
+                try { // Guardamos cambios en archivo
+                    Consultorio.instance.guardarCitasArchivo();
+                } catch (IOException ex) {
+                    Logger.getLogger(panelCitas.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 // Refrescamos
                 updateTable();
             }
@@ -193,6 +202,11 @@ public class panelCitas extends javax.swing.JPanel {
                     JOptionPane.showMessageDialog(null, "No se encontró una cita con ese ID");
                 } else {
                     JOptionPane.showMessageDialog(null, "Elimnacion exitosa");
+                    try { // Guardamos cambios en archivo
+                        Consultorio.instance.guardarCitasArchivo();
+                    } catch (IOException ex) {
+                        Logger.getLogger(panelCitas.class.getName()).log(Level.SEVERE, null, ex);
+                    }
                     updateTable();
                 }
 
