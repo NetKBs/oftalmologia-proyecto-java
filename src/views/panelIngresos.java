@@ -6,10 +6,19 @@ package views;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
 import org.jfree.data.general.DefaultPieDataset;
+
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.List;
 
 /**
  *
@@ -172,30 +181,109 @@ public class panelIngresos extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField4ActionPerformed
 
+    public String classifyDate(int day, int month, int year) {
+
+        LocalDate today = LocalDate.now();
+
+        // La fecha dada 
+        LocalDate givenDate = LocalDate.of(year, month, day);
+
+        // Calcular la diferencia en días 
+        long daysBetween = ChronoUnit.DAYS.between(givenDate, today);
+
+        if (daysBetween == 0) {
+            return "Today";
+        } else if (daysBetween > 0 && daysBetween <= 7) {
+            return "Week";
+        } else if (daysBetween > 7 && daysBetween <= 30) {
+            return "Month";
+        } else {
+            return "Older";
+        }
+    }
+
+
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-         
-        int n1 = Integer.parseInt(jTextField1.getText());
-        int n2 = Integer.parseInt(jTextField2.getText());
-        int n3 = Integer.parseInt(jTextField3.getText());
-        int n4 = Integer.parseInt(jTextField4.getText());
-        
+        int monto_d = 0;
+        int monto_s = 0;
+        int monto_m = 0;
+
+        // Accedemos al archivo de ingresos
+        String filePath = System.getProperty("user.dir") + File.separator + "src"
+                + File.separator + "temp" + File.separator + "ingresos.txt";
+        File file = new File(filePath);
+
+        if (!file.exists()) {
+            // Crea el archivo si no existe
+            try {
+                file.createNewFile();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+        try {
+            List<String> lines = Files.readAllLines(Paths.get(filePath));
+
+            for (String line : lines) {
+                String[] split = line.split("\\|");
+
+                if (split[0].isEmpty()) {
+                    continue;  // Salta esta línea vacía  
+                }
+
+                int cantidad = Integer.parseInt(split[0]);
+                int dia = Integer.parseInt(split[1]);
+                int mes = Integer.parseInt(split[2]);
+                int anio = Integer.parseInt(split[3]);
+                // Encontramos su ubicacion en el tiempo
+                String ref = dia + " " + mes + " " + anio;
+
+                switch (classifyDate(dia, mes, anio)) {
+                    case "Today": {
+                        //System.out.println("Today: " + ref + " Monto: " + cantidad);
+                        monto_d += cantidad;
+                        break;
+                    }
+                    case "Week": {
+                        //System.out.println("Week: " + ref + " Monto: " + cantidad);
+                        monto_s += cantidad;
+                        break;
+                    }
+                    case "Month": {
+                        //System.out.println("Moth: " + ref + " Monto: " + cantidad);
+                        monto_m += cantidad;
+                        break;
+                    }
+                    // Older
+                    default: {
+                       // System.out.println("Older: " + ref + " Monto: " + cantidad);
+                        break;
+                    }
+                }
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        // Cargamos información
         DefaultPieDataset datos = new DefaultPieDataset();
-        datos.setValue("Promedio Mensual", n1);
-        datos.setValue("Promedio Semanal", n2);
-        datos.setValue("Promedio Quincenal", n3);
-        datos.setValue("Promedio al Día", n4);
-        
+        datos.setValue("Promedio Mensual", monto_m);
+        datos.setValue("Promedio Semanal", monto_s);
+        datos.setValue("Promedio al Día", monto_d);
+
         JFreeChart torta = ChartFactory.createPieChart("Promedio de Ingresos", datos, true, true, false);
-        
+
         ChartPanel panel = new ChartPanel(torta);
         panel.setMouseWheelEnabled(true);
-        panel.setPreferredSize(new Dimension(785,313));
-         
+        panel.setPreferredSize(new Dimension(785, 313));
+
         jPanel2.setLayout(new BorderLayout());
         jPanel2.add(panel, BorderLayout.NORTH);
         this.revalidate();
         this.repaint();
-        
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
 
