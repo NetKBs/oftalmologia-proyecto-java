@@ -4,6 +4,10 @@
  */
 package views;
 
+import java.awt.Dimension;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+
 /**
  *
  * @author Net
@@ -131,7 +135,21 @@ public class panelCitas extends javax.swing.JPanel {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
+       
+        crearCitass c = new crearCitass();
+        new MyPopup(c).setVisible(true); 
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    // La ventana emergente
+    class MyPopup extends JFrame {
+
+        public MyPopup(JPanel externalPanel) {
+            setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+            Dimension preferredSize = externalPanel.getPreferredSize();        
+          setSize(preferredSize.width, preferredSize.height);  
+            getContentPane().add(externalPanel); 
+        }
+    }
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
