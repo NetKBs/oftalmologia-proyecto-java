@@ -16,6 +16,7 @@ public class AdminPanel extends javax.swing.JFrame {
      */
     public AdminPanel() {
         initComponents();
+        setResizable(false);
         
         panelPrincipal panel = new panelPrincipal();
         panel.setSize(859, 515);
@@ -65,7 +66,6 @@ public class AdminPanel extends javax.swing.JFrame {
 
         jButton1.setBackground(new java.awt.Color(153, 255, 255));
         jButton1.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(0, 0, 0));
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/inescoro/icons/cita.png"))); // NOI18N
         jButton1.setText(" CREAR CITAS");
         jButton1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
@@ -78,7 +78,6 @@ public class AdminPanel extends javax.swing.JFrame {
 
         jButton2.setBackground(new java.awt.Color(0, 204, 204));
         jButton2.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(0, 0, 0));
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/inescoro/icons/orden.png"))); // NOI18N
         jButton2.setText(" EMITIR ORDEN");
         jButton2.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
@@ -91,7 +90,6 @@ public class AdminPanel extends javax.swing.JFrame {
 
         jButton4.setBackground(new java.awt.Color(153, 255, 255));
         jButton4.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
-        jButton4.setForeground(new java.awt.Color(0, 0, 0));
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/inescoro/icons/pago.png"))); // NOI18N
         jButton4.setText(" GENERAR PAGOS");
         jButton4.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
@@ -104,7 +102,6 @@ public class AdminPanel extends javax.swing.JFrame {
 
         jButton5.setBackground(new java.awt.Color(0, 204, 204));
         jButton5.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
-        jButton5.setForeground(new java.awt.Color(0, 0, 0));
         jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/inescoro/icons/impri.png"))); // NOI18N
         jButton5.setText("  HISTORIA MÉDICA");
         jButton5.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
@@ -117,7 +114,6 @@ public class AdminPanel extends javax.swing.JFrame {
 
         jButton6.setBackground(new java.awt.Color(153, 255, 255));
         jButton6.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
-        jButton6.setForeground(new java.awt.Color(0, 0, 0));
         jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/inescoro/icons/calen.png"))); // NOI18N
         jButton6.setText(" RESUMEN DE ACTIVIDAD");
         jButton6.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
@@ -130,7 +126,6 @@ public class AdminPanel extends javax.swing.JFrame {
 
         jButton7.setBackground(new java.awt.Color(0, 204, 204));
         jButton7.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
-        jButton7.setForeground(new java.awt.Color(0, 0, 0));
         jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/inescoro/icons/proveedores (1).png"))); // NOI18N
         jButton7.setText(" PROVEEDORES");
         jButton7.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
@@ -143,7 +138,6 @@ public class AdminPanel extends javax.swing.JFrame {
 
         jButton8.setBackground(new java.awt.Color(153, 255, 255));
         jButton8.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
-        jButton8.setForeground(new java.awt.Color(0, 0, 0));
         jButton8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/inescoro/icons/ingre (1).png"))); // NOI18N
         jButton8.setText(" INGRESOS ");
         jButton8.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
@@ -156,7 +150,6 @@ public class AdminPanel extends javax.swing.JFrame {
 
         jButton9.setBackground(new java.awt.Color(0, 204, 204));
         jButton9.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
-        jButton9.setForeground(new java.awt.Color(0, 0, 0));
         jButton9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/inescoro/icons/ingre (1).png"))); // NOI18N
         jButton9.setText("   EGRESOS");
         jButton9.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
@@ -169,7 +162,6 @@ public class AdminPanel extends javax.swing.JFrame {
 
         jButton10.setBackground(new java.awt.Color(153, 255, 255));
         jButton10.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
-        jButton10.setForeground(new java.awt.Color(0, 0, 0));
         jButton10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/inescoro/icons/recorda.png"))); // NOI18N
         jButton10.setText(" RECORDATORIOS");
         jButton10.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
@@ -182,7 +174,6 @@ public class AdminPanel extends javax.swing.JFrame {
 
         jButton11.setBackground(new java.awt.Color(0, 204, 204));
         jButton11.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
-        jButton11.setForeground(new java.awt.Color(0, 0, 0));
         jButton11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/inescoro/icons/saliendo.png"))); // NOI18N
         jButton11.setText(" SALIR");
         jButton11.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
@@ -195,7 +186,6 @@ public class AdminPanel extends javax.swing.JFrame {
 
         Username.setBackground(new java.awt.Color(0, 0, 0));
         Username.setFont(new java.awt.Font("Sitka Text", 1, 18)); // NOI18N
-        Username.setForeground(new java.awt.Color(0, 0, 0));
         Username.setIcon(new javax.swing.ImageIcon(getClass().getResource("/inescoro/icons/user.png"))); // NOI18N
         Username.setText("jLabel3");
         menu.add(Username, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 50, 150, 60));
@@ -204,7 +194,6 @@ public class AdminPanel extends javax.swing.JFrame {
         header.setPreferredSize(new java.awt.Dimension(750, 150));
 
         jLabel1.setFont(new java.awt.Font("Sitka Display", 1, 36)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("SISTEMA ADMINISTRATIVO");
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/inescoro/icons/logo oftal.png"))); // NOI18N
@@ -216,7 +205,7 @@ public class AdminPanel extends javax.swing.JFrame {
             .addGroup(headerLayout.createSequentialGroup()
                 .addGap(38, 38, 38)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 459, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
                 .addComponent(jLabel2)
                 .addGap(53, 53, 53))
         );
@@ -254,7 +243,7 @@ public class AdminPanel extends javax.swing.JFrame {
                 .addComponent(contenido, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(backgroundLayout.createSequentialGroup()
                 .addGap(262, 262, 262)
-                .addComponent(header, javax.swing.GroupLayout.DEFAULT_SIZE, 876, Short.MAX_VALUE))
+                .addComponent(header, javax.swing.GroupLayout.DEFAULT_SIZE, 877, Short.MAX_VALUE))
         );
         backgroundLayout.setVerticalGroup(
             backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -334,7 +323,10 @@ public class AdminPanel extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton10ActionPerformed
 
     private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
-        // TODO add your handling code here:
+       LoginAdmin salida = new LoginAdmin();
+       salida.setVisible(true);
+       this.setVisible(false);
+       
     }//GEN-LAST:event_jButton11ActionPerformed
 
     /**

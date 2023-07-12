@@ -23,6 +23,7 @@ public class LoginAdmin extends javax.swing.JFrame {
      */
     public LoginAdmin() {
         initComponents();
+        setResizable(false);
     }
 
     /**
