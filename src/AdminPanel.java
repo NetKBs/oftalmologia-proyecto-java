@@ -1,6 +1,7 @@
 
 import java.awt.BorderLayout;
 import views.crearCitass;
+import views.panelCitas;
 import views.generarPagoss;
 import views.panelPrincipal;
 import views.proveedores;
@@ -68,14 +69,14 @@ public class AdminPanel extends javax.swing.JFrame {
         jButton1.setBackground(new java.awt.Color(153, 255, 255));
         jButton1.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/inescoro/icons/cita.png"))); // NOI18N
-        jButton1.setText(" CREAR CITAS");
+        jButton1.setText(" CITAS                       ");
         jButton1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
-        menu.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-80, 190, 350, 50));
+        menu.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-30, 190, 300, 50));
 
         jButton2.setBackground(new java.awt.Color(0, 204, 204));
         jButton2.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
@@ -274,7 +275,7 @@ public class AdminPanel extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        crearCitass c1 = new crearCitass();
+        panelCitas c1 = new panelCitas();
         c1.setSize(859, 515);
         c1.setLocation(0, 0);
         
