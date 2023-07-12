@@ -3,10 +3,16 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
+            <file>file:/C:/Users/Inesc28/OneDrive/Documentos/oftalmologia-proyecto-java/src/views/panelIngresos.java</file>
+            <file>file:/C:/Users/Inesc28/OneDrive/Documentos/oftalmologia-proyecto-java/src/views/panelEgresos.java</file>
+            <file>file:/C:/Users/Inesc28/OneDrive/Documentos/oftalmologia-proyecto-java/src/AdminPanel.java</file>
+=======
             <file>file:/home/Net/Documentos/ProyectOftal/src/views/panelCitas.java</file>
             <file>file:/home/Net/Documentos/ProyectOftal/src/views/proveedores.java</file>
             <file>file:/home/Net/Documentos/ProyectOftal/src/AdminPanel.java</file>
             <file>file:/home/Net/Documentos/ProyectOftal/src/views/crearCitass.java</file>
+>>>>>>> 7d00154193fa43d31e96f9c0f40fd4a57dfd3aa9
         </group>
     </open-files>
 </project-private>
