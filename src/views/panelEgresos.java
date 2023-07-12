@@ -198,7 +198,8 @@ public class panelEgresos extends javax.swing.JPanel {
         jPanel2.setLayout(new BorderLayout());
         jPanel2.add(panel, BorderLayout.NORTH);
         
-        repaint();
+        this.revalidate();
+        this.repaint();
     }//GEN-LAST:event_jButton1ActionPerformed
 
 
