@@ -14,6 +14,10 @@ import ClasesGenerales.Cita;
 import ClasesGenerales.Consultorio;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -272,7 +276,13 @@ public class crearCitass extends javax.swing.JPanel {
             horario.setText("");
 
             JOptionPane.showMessageDialog(this, "Cita creada", "Importante", JOptionPane.WARNING_MESSAGE);
-
+            try {
+                Consultorio.instance.guardarCitasArchivo(); // guardamos los cambios
+            } catch (FileNotFoundException ex) {
+                Logger.getLogger(crearCitass.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (IOException ex) {
+                Logger.getLogger(crearCitass.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 
