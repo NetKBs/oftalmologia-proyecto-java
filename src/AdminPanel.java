@@ -3,6 +3,7 @@ import java.awt.BorderLayout;
 import views.crearCitass;
 import views.generarPagoss;
 import views.panelPrincipal;
+import views.proveedores;
 
 
 /**
@@ -318,7 +319,14 @@ public class AdminPanel extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-        // TODO add your handling code here:
+        proveedores pro1 = new proveedores();
+        pro1.setSize(859, 515);
+        pro1.setLocation(0, 0);
+        
+        contenido.removeAll();
+        contenido.add(pro1, BorderLayout.CENTER);
+        contenido.revalidate();
+        contenido.repaint();
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
