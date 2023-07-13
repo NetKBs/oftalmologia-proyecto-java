@@ -9,13 +9,17 @@ import ClasesGenerales.Cita;
 import ClasesGenerales.Pago;
 import java.awt.Component;
 import java.awt.Container;
+import java.awt.Dimension;
 import java.awt.event.ItemEvent;
 import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ButtonGroup;
 import javax.swing.ButtonModel;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
@@ -302,43 +306,69 @@ public class generarPagoss extends javax.swing.JPanel {
 
         } else {
             // Procesamos el pago
-      
-            
+
             // Obtenemos el RadioButton seleccionado
             Component[] metodo_radio_buttons = jPanel_metodo_pago.getComponents();
-            Component[] moneda_radio_buttons = jPanel_moneda.getComponents(); 
+            Component[] moneda_radio_buttons = jPanel_moneda.getComponents();
             String metodo = "";
             String moneda = "";
-            
+
             for (Component radio : metodo_radio_buttons) { // Obtenemos metodo
-                if (radio instanceof JRadioButton && ((JRadioButton)radio).isSelected()) {
+                if (radio instanceof JRadioButton && ((JRadioButton) radio).isSelected()) {
                     JRadioButton selectedButton = (JRadioButton) radio;
                     String texto = selectedButton.getName();
                     metodo = texto;
-                    break;            
+                    break;
                 }
             }
-            
+
             for (Component radio : moneda_radio_buttons) { // Obtenemos moneda
-                if (radio instanceof JRadioButton && ((JRadioButton)radio).isSelected()) {
+                if (radio instanceof JRadioButton && ((JRadioButton) radio).isSelected()) {
                     JRadioButton selectedButton = (JRadioButton) radio;
                     String texto = selectedButton.getName();
                     moneda = texto;
-                    break;            
+                    break;
                 }
             }
-            
+
             // Verificar
             Pago pago = new Pago(metodo, moneda, Integer.parseInt(cita_id.getText()), Integer.parseInt(monto.getText()), referencia.getText());
 
             try {
                 if (!pago.procesarPago()) {
                     JOptionPane.showMessageDialog(this, "No se encontró la cita con respecto al ID proporcionado", "Warning", JOptionPane.WARNING_MESSAGE);
-                    
+
                 } else {
-                    JOptionPane.showMessageDialog(this, "Pago registrado", "Importante", JOptionPane.WARNING_MESSAGE);
+                    // Pago con éxito
                     Consultorio.instance.guardadoActividades("cantidad_pagos");
                     Consultorio.instance.cargarActividades();
+
+                    // Mostramos factura
+
+                    // Obtener fecha y hora actual
+                    LocalDateTime currentDateTime = LocalDateTime.now();
+                    // Formateador de fecha y hora
+                    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yy HH:mm:ss");
+                    // Formatear la fecha y hora 
+                    String formattedDateTime = currentDateTime.format(formatter);
+
+                    // Obtenemos cita referida
+                    ArrayList<Cita> citas_activas = Consultorio.instance.getCitas_activas();
+                    Cita cita = null;
+                    int index = -1;
+
+                    // Verificar si existe
+                    for (int i = 0; i < citas_activas.size(); i++) {
+                        if (citas_activas.get(i).getId() == Integer.parseInt(cita_id.getText())) {
+                            cita = citas_activas.get(i);
+                            break;
+                        }
+                    }
+                    
+                    String nombre = cita.getPaciente().getNombres() + " " + cita.getPaciente().getApellidos();
+                    imprimirPago imp = new imprimirPago(cita_id.getText(), nombre, metodo, moneda, monto.getText(), referencia.getText(), formattedDateTime);      
+                    new MyPopup(imp).setVisible(true);
+
                 }
             } catch (IOException ex) {
                 Logger.getLogger(generarPagoss.class.getName()).log(Level.SEVERE, null, ex);
@@ -352,6 +382,25 @@ public class generarPagoss extends javax.swing.JPanel {
 
 
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    // La ventana emergente
+    class MyPopup extends JFrame {
+
+        public MyPopup(JPanel externalPanel) {
+
+            setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+
+          // Asignar tamaño fijo
+          setSize(680, 725);  
+
+          // Evitar redimencionamiento  
+          setResizable(false);  
+
+          Dimension preferredSize = externalPanel.getPreferredSize();
+          //setSize(preferredSize.width, preferredSize.height);
+          getContentPane().add(externalPanel);
+        }
+    }
 
     // manejar RadioButtons
     public void radioButtonsEvent() {

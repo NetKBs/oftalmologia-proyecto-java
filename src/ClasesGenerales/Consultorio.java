@@ -215,6 +215,8 @@ public class Consultorio {
 
     }
 
+  
+    
     public ArrayList<Cita> getCitas_activas() {
         return citas_activas;
     }
