@@ -154,22 +154,22 @@ public class panelRecordatorios extends javax.swing.JPanel {
                 // Creamos texto plantilla
 
                 String texto = 
-                    "Estimado(a) $cita.getPaciente().getNombres() $cita.getPaciente().getApellidos():\n"+
+                    "Estimado(a) " + cita.getPaciente().getNombres() + " " + cita.getPaciente().getApellidos() + "\n\n"+
                                
-                    "Le recordamos cordialmente su cita con el Dr.{nombre del oftalmólogo} el {día}, " +
-                    "{fecha} a las {hora} en el consultorio de oftalmología {nombre del consultorio}.\n" +
+                    "Le recordamos cordialmente su cita con el Dr.Melendez Rodriguez el "+ cita.getHorario() +
+                    " en el consultorio de oftalmología Luz.\n\n" +
                                
-                    "Su cita es para una revisión de rutina/control de su {condición oftalmológica}. "+
+                    "Su cita es para una revisión de rutina/control de su " + cita.getMotivo() +". "+
                     "Recuerde traer sus anteojos, lentes de contacto y/o medicamentos oculares actuales. "+ 
-                    "También le solicitamos que no use lentes de contacto el día de la cita.\n"+
+                    "También le solicitamos que no use lentes de contacto el día de la cita.\n\n"+
                                
                     "Si tiene alguna pregunta o necesita reprogramar su cita, comuníquese con nuestra oficina al "+ 
-                    "{número de teléfono} de lunes a viernes de {horario de atención}.\n"+
+                    "+206 834 234 de lunes a viernes de 7:00 hasta 15:00.\n\n"+
                                
                     "Nos complace atenderlo y esperamos que su visita sea grata y productiva. "+
-                    "Le deseamos una pronta recuperación de cualquier problema visual que pueda tener.\n"+
+                    "Le deseamos una pronta recuperación de cualquier problema visual que pueda tener.\n\n"+
                                
-                    "Atentamente, El equipo de {nombre del consultorio}";
+                    "Atentamente, El equipo de Centro Médico Oftalmológico Luz";
                         
                 textarea.setText(texto);
             }
