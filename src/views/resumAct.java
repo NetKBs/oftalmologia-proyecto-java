@@ -10,11 +10,15 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.List;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
 import org.jfree.data.general.DefaultPieDataset;
+
+import ClasesGenerales.Consultorio;
 
 /**
  *
@@ -40,7 +44,10 @@ public class resumAct extends javax.swing.JPanel {
     private void initComponents() {
 
         jPanel6 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        panel_contenedor = new javax.swing.JPanel();
         jPanel7 = new javax.swing.JPanel();
+        jPanel1 = new javax.swing.JPanel();
 
         jPanel6.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -48,28 +55,62 @@ public class resumAct extends javax.swing.JPanel {
         jPanel7.setLayout(jPanel7Layout);
         jPanel7Layout.setHorizontalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 667, Short.MAX_VALUE)
+            .addGap(0, 427, Short.MAX_VALUE)
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 376, Short.MAX_VALUE)
+            .addGap(0, 266, Short.MAX_VALUE)
         );
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 368, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 287, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout panel_contenedorLayout = new javax.swing.GroupLayout(panel_contenedor);
+        panel_contenedor.setLayout(panel_contenedorLayout);
+        panel_contenedorLayout.setHorizontalGroup(
+            panel_contenedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_contenedorLayout.createSequentialGroup()
+                .addContainerGap(30, Short.MAX_VALUE)
+                .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        panel_contenedorLayout.setVerticalGroup(
+            panel_contenedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panel_contenedorLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panel_contenedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(154, Short.MAX_VALUE))
+        );
+
+        jScrollPane1.setViewportView(panel_contenedor);
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
-                .addGap(90, 90, 90)
-                .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(102, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 839, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(14, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
-                .addContainerGap(38, Short.MAX_VALUE)
-                .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(77, 77, 77))
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 429, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(43, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -85,72 +126,52 @@ public class resumAct extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     public void graficar() {
-        int material_recibido = 0;
-        int pacientes_atendidos = 0;
-        int gastos_realizados = 0;
-        int cantidad_pagos = 0;
+      
+        // materiales0, pacientes1, gastos2, pagos3
+        int[] actividades_m = Consultorio.instance.getActividades_m();
+        int[] actividades_s = Consultorio.instance.getActividades_s();
 
-        int[] valores = {material_recibido, pacientes_atendidos, gastos_realizados, cantidad_pagos};
-
-        String filePath = System.getProperty("user.dir") + File.separator + "src"
-                + File.separator + "temp" + File.separator;
-        String[] files = {filePath + "material_recibido.txt", filePath + "pacientes_atendidos.txt",
-            filePath + "gastos_realizados.txt", filePath + "cantidad_pagos.txt"};
-
-        for (int i = 0; i < files.length; i++) {
-
-            File file = new File(files[i]);
-
-            if (!file.exists()) {
-                // Crea el archivo si no existe
-                try {
-                    file.createNewFile();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-
-            // Leer archivo y sumar valores 
-            try {
-                List<String> lines = Files.readAllLines(Paths.get(files[i]));
-
-                for (String line : lines) {
-                    int valor = Integer.parseInt(line);
-                    valores[i] += valor;
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-
-        // Asignar valores del array a las variables  
-        material_recibido = valores[0];
-        pacientes_atendidos = valores[1];
-        gastos_realizados = valores[2];
-        cantidad_pagos = valores[3];
-
+      
+        
         DefaultPieDataset datos = new DefaultPieDataset();
-        datos.setValue("Pacientes Atendidos", pacientes_atendidos);
-        datos.setValue("Cantidad de Pagos", cantidad_pagos);
-        datos.setValue("Gastos Realizados", gastos_realizados);
-        datos.setValue("Material Recibido", material_recibido);
+        datos.setValue("Citas Hechas", actividades_s[1]);
+        datos.setValue("Cantidad de Pagos", actividades_s[3]);
+        datos.setValue("Gastos Realizados", actividades_s[2]);
+        datos.setValue("Pacientes Atendidos", actividades_s[0]);
 
-        JFreeChart torta = ChartFactory.createPieChart("Resumen de Actividad", datos, true, true, false);
+        JFreeChart torta = ChartFactory.createPieChart("Resumen de Actividad Semanal", datos, true, true, false);
 
         ChartPanel panel = new ChartPanel(torta);
         panel.setMouseWheelEnabled(true);
-        panel.setPreferredSize(new Dimension(667, 375));
+        // panel.setPreferredSize(new Dimension(667, 375));
+
+        DefaultPieDataset datos2 = new DefaultPieDataset();
+        datos2.setValue("Citas Hechas", actividades_m[1]);
+        datos2.setValue("Cantidad de Pagos", actividades_m[3]);
+        datos2.setValue("Gastos Realizados", actividades_m[2]);
+        datos2.setValue("Pacientes Atendidos", actividades_m[0]);
+
+        JFreeChart torta2 = ChartFactory.createPieChart("Resumen de Actividad Mensual", datos2, true, true, false);
+
+        ChartPanel panel2 = new ChartPanel(torta2);
+        panel2.setMouseWheelEnabled(true);
+        //panel2.setPreferredSize(new Dimension(667, 375));
 
         jPanel7.setLayout(new BorderLayout());
-        jPanel7.add(panel, BorderLayout.NORTH);
+        jPanel1.setLayout(new BorderLayout());
 
+        jPanel7.add(panel, BorderLayout.NORTH);
+        jPanel1.add(panel2, BorderLayout.NORTH);
         this.revalidate();
         this.repaint();
     }
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JPanel panel_contenedor;
     // End of variables declaration//GEN-END:variables
 }

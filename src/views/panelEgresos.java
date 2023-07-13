@@ -4,6 +4,7 @@
  */
 package views;
 
+import ClasesGenerales.Consultorio;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.io.File;
@@ -217,21 +218,21 @@ public class panelEgresos extends javax.swing.JPanel {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        
+
         DefaultCategoryDataset datos = new DefaultCategoryDataset();
         datos.setValue(monto_m, "Egresos Mensuales", "Consultorio");
         datos.setValue(monto_s, "Egresos Semanales", "Consultorio");
         datos.setValue(monto_d, "Egresos Diarios", "Consultorio");
-        
+
         JFreeChart barras = ChartFactory.createBarChart3D("Promedio de Egresos", "Egresos", "Cantidad", datos, PlotOrientation.VERTICAL, true, true, false);
-        
+
         ChartPanel panel = new ChartPanel(barras);
         panel.setMouseWheelEnabled(true);
-        panel.setPreferredSize(new Dimension(785,313));
-         
+        panel.setPreferredSize(new Dimension(785, 313));
+
         jPanel2.setLayout(new BorderLayout());
         jPanel2.add(panel, BorderLayout.NORTH);
-        
+
         this.revalidate();
         this.repaint();
     }
@@ -278,9 +279,15 @@ public class panelEgresos extends javax.swing.JPanel {
                     Logger.getLogger(panelEgresos.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
+            try {
+                Consultorio.instance.guardadoActividades("gastos_realizados");
+            } catch (IOException ex) {
+                Logger.getLogger(panelEgresos.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            Consultorio.instance.cargarActividades();
             graficar();
         }
-        
+
         input.setText(""); // limpiamos input
         graficar();
 

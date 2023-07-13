@@ -337,6 +337,8 @@ public class generarPagoss extends javax.swing.JPanel {
                     
                 } else {
                     JOptionPane.showMessageDialog(this, "Pago registrado", "Importante", JOptionPane.WARNING_MESSAGE);
+                    Consultorio.instance.guardadoActividades("cantidad_pagos");
+                    Consultorio.instance.cargarActividades();
                 }
             } catch (IOException ex) {
                 Logger.getLogger(generarPagoss.class.getName()).log(Level.SEVERE, null, ex);
