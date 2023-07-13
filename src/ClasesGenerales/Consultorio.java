@@ -1,6 +1,5 @@
 package ClasesGenerales;
 
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
@@ -30,13 +29,58 @@ public class Consultorio {
         this.proveedores.add(proveedor);
     }
 
-    public void eliminarProveedor(Proveedor proveedor) {
-        this.proveedores.remove(proveedor);
+    public boolean eliminarProveedor(String empresa) {
+        int index = -1;
+        
+        // Verificar si existe
+        for (int i = 0; i < proveedores.size(); i++) {
+            if (proveedores.get(i).getEmpresa().toLowerCase().equals(empresa.toLowerCase())) {
+                index = i;
+                break;
+            }
+        }
+        
+         if (index != -1) {
+            // Sólo eliminar si existe
+            this.proveedores.remove(index);
+            return true; // confirmar eliminación
+
+        } else {
+            return false;
+        }
+        
     }
 
     public ArrayList<Proveedor> getProveedores() {
         return proveedores;
     }
+    
+    public void guardarProveedoresArchivo() throws FileNotFoundException, IOException {
+        // GUardamos el registro del pago
+        String slice = File.separator;
+        String file_path = System.getProperty("user.dir") + slice + "src"
+                + slice + "temp" + slice + "proveedores.txt";
+
+        // El archivo no existe, lo creamos y escribimos el contenido
+        File file = new File(file_path);
+        if (!file.exists()) {
+            file.createNewFile();
+        }
+
+        try (
+                PrintWriter writer = new PrintWriter(file_path)) {
+            for (Proveedor proveedor : proveedores) {
+                // Paciente{nombres, apellidos, edad, correo, telefono}, motivo, horario
+                writer.append(proveedor.getEmpresa() + "|"+ proveedor.getLista_productos() + "|" + proveedor.getFecha_entrega());
+                
+            }
+            writer.close();
+        }
+
+    }
+    
+    
+    
 
     // Citas
     public void agregarCita(Cita cita) {
@@ -79,9 +123,9 @@ public class Consultorio {
     }
 
     public void cargarCitasrArchivo() {
-        String file_path = System.getProperty("user.dir") + File.separator + "src" + File.separator + "temp" +
-                            File.separator + "citas.txt";
-        
+        String file_path = System.getProperty("user.dir") + File.separator + "src" + File.separator + "temp"
+                + File.separator + "citas.txt";
+
         try (Scanner scan1 = new Scanner(new File(file_path))) {
 
             while (scan1.hasNextLine()) { // Credenciales admin
@@ -94,14 +138,14 @@ public class Consultorio {
                 String tlfno = datos[4].trim().replace(" ", "");
                 String motivo = datos[5].trim().replace(" ", "");
                 String horario = datos[6].trim().replace(" ", "");
-                
+
                 Paciente paciente = new Paciente(nombres, apellidos, correo, tlfno, edad);
                 Cita cita = new Cita(motivo, horario, paciente);
                 citas_activas.add(cita);
             }
 
         } catch (FileNotFoundException ex) {
-         
+
         }
     }
 
