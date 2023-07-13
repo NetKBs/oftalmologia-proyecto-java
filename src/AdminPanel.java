@@ -8,6 +8,7 @@ import views.panelIngresos;
 import views.panelPrincipal;
 import views.proveedores;
 import views.panelRecordatorios;
+import views.resumAct;
 
 
 /**
@@ -320,7 +321,14 @@ public class AdminPanel extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        // TODO add your handling code here:
+        resumAct resum = new resumAct();
+        resum.setSize(859, 515);
+        resum.setLocation(0, 0);
+         
+        contenido.removeAll();
+        contenido.add(resum, BorderLayout.CENTER);
+        contenido.revalidate();
+        contenido.repaint();
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
