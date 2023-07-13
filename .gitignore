@@ -1,2 +1,7 @@
 build/
 temp/
+nbproject/
+*.nbprops
+*.nbmodule
+build.xml
+manifest.mf
