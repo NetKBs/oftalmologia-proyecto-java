@@ -7,6 +7,7 @@ import views.panelEgresos;
 import views.panelIngresos;
 import views.panelPrincipal;
 import views.proveedores;
+import views.panelRecordatorios;
 
 
 /**
@@ -357,6 +358,14 @@ public class AdminPanel extends javax.swing.JFrame {
 
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
         // TODO add your handling code here:
+        panelRecordatorios recordatorio = new panelRecordatorios();
+        recordatorio.setSize(859, 515);
+        recordatorio.setLocation(0, 0);
+        
+        contenido.removeAll();
+        contenido.add(recordatorio, BorderLayout.CENTER);
+        contenido.revalidate();
+        contenido.repaint();
     }//GEN-LAST:event_jButton10ActionPerformed
 
     private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
