@@ -8,8 +8,9 @@ import views.panelIngresos;
 import views.panelPrincipal;
 import views.proveedores;
 import views.GenerarInforme;
-import views.HistoriaMedica;
-
+import views.ConHistoriaMedica;
+import views.seleccionInforme;
+import views.CrearHistoria;
 
 /**
  *
@@ -201,18 +202,18 @@ public class AdminPanelMedico extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        panelCitas c1 = new panelCitas();
-        c1.setSize(859, 515);
-        c1.setLocation(0, 0);
+        CrearHistoria ch = new CrearHistoria();
+        ch.setSize(859, 515);
+        ch.setLocation(0, 0);
         
         contenido.removeAll();
-        contenido.add(c1, BorderLayout.CENTER);
+        contenido.add(ch, BorderLayout.CENTER);
         contenido.revalidate();
         contenido.repaint();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        HistoriaMedica c1 = new HistoriaMedica();
+        ConHistoriaMedica c1 = new ConHistoriaMedica();
         c1.setSize(859, 515);
         c1.setLocation(0, 0);
         
@@ -223,7 +224,7 @@ public class AdminPanelMedico extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        GenerarInforme c1 = new GenerarInforme();
+        seleccionInforme c1 = new seleccionInforme();
         c1.setSize(859, 515);
         c1.setLocation(0, 0);
         
