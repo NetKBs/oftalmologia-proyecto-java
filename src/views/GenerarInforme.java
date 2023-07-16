@@ -48,6 +48,7 @@ public class GenerarInforme extends javax.swing.JPanel {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
         jPanel6.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel6.setPreferredSize(new java.awt.Dimension(859, 515));
 
         jTextArea1.setBackground(new java.awt.Color(0, 51, 255));
         jTextArea1.setColumns(20);
@@ -79,13 +80,13 @@ public class GenerarInforme extends javax.swing.JPanel {
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addGap(292, 292, 292)
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addContainerGap(37, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 429, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 446, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -104,7 +105,7 @@ public class GenerarInforme extends javax.swing.JPanel {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(17, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -123,7 +124,7 @@ public class GenerarInforme extends javax.swing.JPanel {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        String id = input.getText();
+        /*String id = input.getText();
         ArrayList<Cita> citas_activas = Consultorio.instance.getCitas_activas();
         Cita cita = null;
 
@@ -143,7 +144,7 @@ public class GenerarInforme extends javax.swing.JPanel {
         }
         
         ImprimirInforme ImpInfo = new ImprimirInforme();      
-            new MyPopup(ImpInfo).setVisible(true);
+            new MyPopup(ImpInfo).setVisible(true);*/
     }//GEN-LAST:event_jButton1ActionPerformed
 
     // La ventana emergente

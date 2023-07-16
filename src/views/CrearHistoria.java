@@ -4,35 +4,17 @@
  */
 package views;
 
-import java.awt.Dimension;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-
-import ClasesGenerales.Consultorio;
-import ClasesGenerales.Cita;
-import java.awt.event.WindowEvent;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.JOptionPane;
-import javax.swing.event.TableModelEvent;
-import javax.swing.event.TableModelListener;
-import javax.swing.table.DefaultTableModel;
-
 /**
  *
- * @author Net
+ * @author Cesar
  */
-public class panelCitas extends javax.swing.JPanel {
+public class CrearHistoria extends javax.swing.JPanel {
 
     /**
-     * Creates new form panelCitas
+     * Creates new form CrearHistoria
      */
-    public panelCitas() {
+    public CrearHistoria() {
         initComponents();
-      
-        updateTable();
     }
 
     /**
@@ -46,13 +28,14 @@ public class panelCitas extends javax.swing.JPanel {
 
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
+        jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabla = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
 
-        jPanel2.setBackground(new java.awt.Color(0, 204, 204));
+        jPanel3.setBackground(new java.awt.Color(0, 204, 204));
 
         tabla.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -104,12 +87,12 @@ public class panelCitas extends javax.swing.JPanel {
             }
         });
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jScrollPane1)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+            .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(88, 88, 88)
                 .addComponent(jButton3)
                 .addGap(155, 155, 155)
@@ -118,11 +101,11 @@ public class panelCitas extends javax.swing.JPanel {
                 .addComponent(jButton1)
                 .addGap(127, 127, 127))
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addGap(0, 120, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton3)
                     .addComponent(jButton1)
                     .addComponent(jButton4))
@@ -130,15 +113,36 @@ public class panelCitas extends javax.swing.JPanel {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGap(0, 899, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGap(0, 514, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -154,7 +158,7 @@ public class panelCitas extends javax.swing.JPanel {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 510, Short.MAX_VALUE)
+            .addGap(0, 514, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
@@ -162,7 +166,6 @@ public class panelCitas extends javax.swing.JPanel {
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
     }// </editor-fold>//GEN-END:initComponents
-
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
@@ -209,7 +212,6 @@ public class panelCitas extends javax.swing.JPanel {
             }
 
         }
-
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -221,52 +223,11 @@ public class panelCitas extends javax.swing.JPanel {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
-        updateTable();
-        // Revalidate and repaint the table    
+        //updateTable();
+        // Revalidate and repaint the table
         tabla.revalidate();
         tabla.repaint();
     }//GEN-LAST:event_jButton4ActionPerformed
-
-    // La ventana emergente
-    class MyPopup extends JFrame {
-
-        public MyPopup(JPanel externalPanel) {
-
-            setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-            Dimension preferredSize = externalPanel.getPreferredSize();
-            setSize(preferredSize.width, preferredSize.height);
-            getContentPane().add(externalPanel);
-        }
-    }
-
-    // Actualiar y cargar tabla
-    public void updateTable() {
-
-        // Obtenemos datos de las citas
-        ArrayList<Cita> citas = Consultorio.instance.getCitas_activas();
-
-        // Obtener el modelo de datos de la tabla
-        DefaultTableModel model = (DefaultTableModel) tabla.getModel();
-
-        // Limpiar la tabla existente
-        model.setRowCount(0);
-
-        // Agregar nuevas filas 
-        for (Cita cita : citas) {
-            // Obtener los datos de la fila
-            int id = cita.getId();
-            String horario = cita.getHorario();
-            String motivo = cita.getMotivo();
-            String paciente = cita.getPaciente().getNombres() + " " + cita.getPaciente().getApellidos();
-            String correo = cita.getPaciente().getCorreo();
-            String telefono = cita.getPaciente().getTlfno();
-
-            // Agregar la fila al modelo de datos
-            Object[] row = {id, horario, motivo, paciente, correo, telefono};
-            model.addRow(row);
-
-        }
-    }
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -275,6 +236,7 @@ public class panelCitas extends javax.swing.JPanel {
     private javax.swing.JButton jButton4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tabla;
     // End of variables declaration//GEN-END:variables
