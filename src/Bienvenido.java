@@ -1,3 +1,6 @@
+
+import java.io.File;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -13,6 +16,15 @@ public class Bienvenido extends javax.swing.JFrame {
      * Creates new form Bienvenido
      */
     public Bienvenido() {
+        // checar directorio de datos
+        String slice = File.separator;
+        String file_path = System.getProperty("user.dir") + slice + "src" + slice + "temp";
+        
+        //Verificar si existe la carpeta temp
+        if (!new File(file_path).exists()) {
+            new File(file_path).mkdirs();
+        }
+        
         initComponents();
         setResizable(false);
     }
@@ -161,6 +173,7 @@ public class Bienvenido extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         CrearDocUser crear = new CrearDocUser();
         crear.setVisible(true);

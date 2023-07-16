@@ -264,8 +264,7 @@ public class LoginAdmin extends javax.swing.JFrame {
 
             // Verificamos credenciales
             if (admin_data_file[0].equals(user)) { // Admin
-                
-                System.out.println(admin_data_file[1] + " " + stringpass);
+          
                 
                 if (admin_data_file[1].equals(stringpass)) {
                     AdminPanel admin_panel = new AdminPanel();
