@@ -224,7 +224,37 @@ public class Consultorio {
     public ArrayList<Cita> getCitas_finalizadas() {
         return citas_finalizadas;
     }
+    
+    public void setCitas_finalizadas(ArrayList<Cita> citas) {
+        citas_finalizadas = citas;
+    }
+    
+    public void guardarCitasFinalizadas() throws FileNotFoundException, IOException {
+        // GUardamos el registro del pago
+        String slice = File.separator;
+        String file_path = System.getProperty("user.dir") + slice + "src"
+                + slice + "temp" + slice + "citas_finalizadas.txt";
 
+        // El archivo no existe, lo creamos y escribimos el contenido
+        File file = new File(file_path);
+        if (!file.exists()) {
+            file.createNewFile();
+        }
+
+        try (
+                PrintWriter writer = new PrintWriter(file_path)) {
+            for (Cita cita : citas_activas) {
+                // Paciente{nombres, apellidos, edad, correo, telefono}, motivo, horario
+                writer.append(cita.getPaciente().getNombres() + "|" + cita.getPaciente().getApellidos()
+                        + "|" + cita.getPaciente().getEdad() + "|" + cita.getPaciente().getCorreo()
+                        + "|" + cita.getPaciente().getTlfno() + "|" + cita.getMotivo() + "|"
+                        + cita.getHorario() + "|" + cita.getHistoria() + "|" + cita.getInforme() + "\n");
+            }
+            writer.close();
+        }
+
+    }
+    
     public void cargarCitasrArchivo() {
         String file_path = System.getProperty("user.dir") + File.separator + "src" + File.separator + "temp"
                 + File.separator + "citas.txt";
@@ -241,10 +271,45 @@ public class Consultorio {
                 String tlfno = datos[4].trim();
                 String motivo = datos[5].trim();
                 String horario = datos[6].trim();
+                String historia = datos[7].trim();
+                String informe = datos[8].trim();
 
                 Paciente paciente = new Paciente(nombres, apellidos, correo, tlfno, edad);
                 Cita cita = new Cita(motivo, horario, paciente);
+                cita.setInforme(informe);
+                cita.setHistoria(historia);
                 citas_activas.add(cita);
+            }
+
+        } catch (FileNotFoundException ex) {
+
+        }
+    }
+
+    public void cargarCitasFinalizadasArchivo() {
+        String file_path = System.getProperty("user.dir") + File.separator + "src" + File.separator + "temp"
+                + File.separator + "citas_finalizadas.txt";
+
+        try (Scanner scan1 = new Scanner(new File(file_path))) {
+
+            while (scan1.hasNextLine()) { // Credenciales admin
+                String linea = scan1.nextLine();
+                String[] datos = linea.split("\\|");
+                String nombres = datos[0].trim();
+                String apellidos = datos[1].trim();
+                int edad = Integer.parseInt(datos[2].trim());
+                String correo = datos[3].trim();
+                String tlfno = datos[4].trim();
+                String motivo = datos[5].trim();
+                String horario = datos[6].trim();
+                String historia = datos[7].trim();
+                String informe = datos[8].trim();
+
+                Paciente paciente = new Paciente(nombres, apellidos, correo, tlfno, edad);
+                Cita cita = new Cita(motivo, horario, paciente);
+                cita.setInforme(informe);
+                cita.setHistoria(historia);
+                citas_finalizadas.add(cita);
             }
 
         } catch (FileNotFoundException ex) {
