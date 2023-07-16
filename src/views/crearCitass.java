@@ -278,6 +278,8 @@ public class crearCitass extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "Cita creada", "Importante", JOptionPane.WARNING_MESSAGE);
             try {
                 Consultorio.instance.guardarCitasArchivo(); // guardamos los cambios
+                Consultorio.instance.guardadoActividades("pacientes_atendidos"); 
+                Consultorio.instance.cargarActividades();
             } catch (FileNotFoundException ex) {
                 Logger.getLogger(crearCitass.class.getName()).log(Level.SEVERE, null, ex);
             } catch (IOException ex) {

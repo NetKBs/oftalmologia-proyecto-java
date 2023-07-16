@@ -2,6 +2,7 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+<<<<<<< HEAD
         <group>
             <file>file:/C:/Users/Cesar/Documents/oftalmologia-proyecto-java/src/views/panelEgresos.java</file>
             <file>file:/C:/Users/Cesar/Documents/oftalmologia-proyecto-java/src/AdminPanel.java</file>
@@ -10,5 +11,8 @@
             <file>file:/C:/Users/Cesar/Documents/oftalmologia-proyecto-java/src/Main.java</file>
             <file>file:/C:/Users/Cesar/Documents/oftalmologia-proyecto-java/src/views/panelCitas.java</file>
         </group>
+=======
+        <group/>
+>>>>>>> 8771d82d290858c3ae844c33eaea0e288b661a76
     </open-files>
 </project-private>

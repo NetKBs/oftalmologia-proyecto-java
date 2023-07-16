@@ -7,6 +7,8 @@ import views.panelEgresos;
 import views.panelIngresos;
 import views.panelPrincipal;
 import views.proveedores;
+import views.GenerarInforme;
+import views.HistoriaMedica;
 
 
 /**
@@ -120,7 +122,7 @@ public class AdminPanelMedico extends javax.swing.JFrame {
         header.setPreferredSize(new java.awt.Dimension(750, 150));
 
         jLabel1.setFont(new java.awt.Font("Sitka Display", 1, 36)); // NOI18N
-        jLabel1.setText("SISTEMA ADMINISTRATIVO");
+        jLabel1.setText("SISTEMA MÉDICO");
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/inescoro/icons/logo oftal.png"))); // NOI18N
 
@@ -210,11 +212,25 @@ public class AdminPanelMedico extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+        HistoriaMedica c1 = new HistoriaMedica();
+        c1.setSize(859, 515);
+        c1.setLocation(0, 0);
+        
+        contenido.removeAll();
+        contenido.add(c1, BorderLayout.CENTER);
+        contenido.revalidate();
+        contenido.repaint();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        // TODO add your handling code here:
+        GenerarInforme c1 = new GenerarInforme();
+        c1.setSize(859, 515);
+        c1.setLocation(0, 0);
+        
+        contenido.removeAll();
+        contenido.add(c1, BorderLayout.CENTER);
+        contenido.revalidate();
+        contenido.repaint();
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed

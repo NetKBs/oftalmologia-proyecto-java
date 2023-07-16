@@ -5,6 +5,7 @@ import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class Pago {
@@ -12,10 +13,10 @@ public class Pago {
     private String metodo;
     private String moneda;
     private int cita_id;
-    private int monto;
+    private float monto;
     private String ref;
 
-    public Pago(String metodo, String moneda, int cita_id, int monto, String ref) {
+    public Pago(String metodo, String moneda, int cita_id, float monto, String ref) {
         this.metodo = metodo;
         this.cita_id = cita_id;
         this.moneda = moneda;
@@ -23,7 +24,7 @@ public class Pago {
         this.ref = ref;
     }
 
-    public int getMonto() {
+    public float getMonto() {
         return monto;
     }
 
@@ -38,9 +39,7 @@ public class Pago {
     public void setRef(String ref) {
         this.ref = ref;
     }
-    
-    
-    
+
     public String getMoneda() {
         return moneda;
     }
@@ -80,26 +79,32 @@ public class Pago {
         if (index != -1) { // Se ha encontrado
             citas.get(index).setEstado(true); // verificar pago
             Consultorio.instance.setCitasActivas(citas);
+            LocalDate today = LocalDate.now();
+
+            int day = today.getDayOfMonth();
+            int month = today.getMonthValue();
+            int year = today.getYear();
 
             // GUardamos el registro del pago
             String slice = File.separator;
-            String file_path = System.getProperty("user.dir") + slice + "src" + 
-                                             slice + "temp" + slice + "ingresos.txt";
-      
+            String file_path = System.getProperty("user.dir") + slice + "src"
+                    + slice + "temp" + slice + "ingresos.txt";
 
             // Primero, revisamos si el archivo existe
             File file = new File(file_path);
             if (file.exists()) {
                 // El archivo existe, lo abrimos para agregar contenido
                 PrintWriter writer = new PrintWriter(new FileWriter(file_path, true));
-                writer.append(ref + "|" + moneda + "|" + monto + "|" + metodo + "|" + cita_id + "\n");
+                writer.append(monto + "|" + day + "|" + month + "|" + year + "|"+ 
+                        ref + "|" + moneda + "|" + metodo + "|" + cita_id + "\n");
                 writer.close();
             } else {
                 // El archivo no existe, lo creamos y escribimos el contenido
                 PrintWriter writer = new PrintWriter(file_path);
-                writer.append(ref + "|" + moneda + "|" + monto + "|" + metodo + "|" + cita_id + "\n");
+                writer.append(monto + "|" + day + "|" + month + "|" + year + "|"+ 
+                        ref + "|" + moneda + "|" + metodo + "|" + cita_id + "\n");
                 writer.close();
-               
+
             }
 
             return true;

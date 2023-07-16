@@ -255,7 +255,7 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Sitka Display" size="36" style="1"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="SISTEMA ADMINISTRATIVO"/>
+                <Property name="text" type="java.lang.String" value="SISTEMA M&#xc9;DICO"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel2">
