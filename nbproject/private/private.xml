@@ -2,11 +2,26 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+<<<<<<< HEAD
         <group>
             <file>file:/home/Net/oftalmologia-proyecto-java/src/views/panelIngresos.java</file>
             <file>file:/home/Net/oftalmologia-proyecto-java/src/ClasesGenerales/Consultorio.java</file>
             <file>file:/home/Net/oftalmologia-proyecto-java/src/views/generarPagoss.java</file>
             <file>file:/home/Net/oftalmologia-proyecto-java/src/views/panelEgresos.java</file>
         </group>
+=======
+<<<<<<< HEAD
+        <group>
+            <file>file:/C:/Users/Cesar/Documents/oftalmologia-proyecto-java/src/views/panelEgresos.java</file>
+            <file>file:/C:/Users/Cesar/Documents/oftalmologia-proyecto-java/src/AdminPanel.java</file>
+            <file>file:/C:/Users/Cesar/Documents/oftalmologia-proyecto-java/src/LoginAdmin.java</file>
+            <file>file:/C:/Users/Cesar/Documents/oftalmologia-proyecto-java/src/AdminPanelMedico.java</file>
+            <file>file:/C:/Users/Cesar/Documents/oftalmologia-proyecto-java/src/Main.java</file>
+            <file>file:/C:/Users/Cesar/Documents/oftalmologia-proyecto-java/src/views/panelCitas.java</file>
+        </group>
+=======
+        <group/>
+>>>>>>> 8771d82d290858c3ae844c33eaea0e288b661a76
+>>>>>>> 8ddbf9b2e2077c90f41cf54b79216f2b681d9a2e
     </open-files>
 </project-private>
