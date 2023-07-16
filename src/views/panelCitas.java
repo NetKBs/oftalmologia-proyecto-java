@@ -16,6 +16,8 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.event.TableModelEvent;
+import javax.swing.event.TableModelListener;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -29,7 +31,7 @@ public class panelCitas extends javax.swing.JPanel {
      */
     public panelCitas() {
         initComponents();
-        
+      
         updateTable();
     }
 

@@ -13,10 +13,10 @@ public class Pago {
     private String metodo;
     private String moneda;
     private int cita_id;
-    private int monto;
+    private float monto;
     private String ref;
 
-    public Pago(String metodo, String moneda, int cita_id, int monto, String ref) {
+    public Pago(String metodo, String moneda, int cita_id, float monto, String ref) {
         this.metodo = metodo;
         this.cita_id = cita_id;
         this.moneda = moneda;
@@ -24,7 +24,7 @@ public class Pago {
         this.ref = ref;
     }
 
-    public int getMonto() {
+    public float getMonto() {
         return monto;
     }
 

@@ -19,6 +19,7 @@ import java.time.temporal.ChronoUnit;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
@@ -156,9 +157,9 @@ public class panelEgresos extends javax.swing.JPanel {
 
     public void graficar() {
 
-        int monto_d = 0;
-        int monto_s = 0;
-        int monto_m = 0;
+       float monto_d = 0;
+        float monto_s = 0;
+       float monto_m = 0;
 
         // Accedemos al archivo de ingresos
         String filePath = System.getProperty("user.dir") + File.separator + "src"
@@ -184,7 +185,7 @@ public class panelEgresos extends javax.swing.JPanel {
                     continue;  // Salta esta línea vacía
                 }
 
-                int cantidad = Integer.parseInt(split[0]);
+               float cantidad = Float.parseFloat(split[0]);
                 int dia = Integer.parseInt(split[1]);
                 int mes = Integer.parseInt(split[2]);
                 int anio = Integer.parseInt(split[3]);
@@ -240,9 +241,15 @@ public class panelEgresos extends javax.swing.JPanel {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
         String gasto_s = input.getText();
-
+        float gasto = 0;
         if (!gasto_s.equals("")) {
-            int gasto = Integer.parseInt(input.getText());
+            try {
+               gasto = Float.parseFloat(input.getText());
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(this, "Valores incorrectos");
+                return;
+            }
+           
 
             LocalDate today = LocalDate.now();
 

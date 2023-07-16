@@ -18,7 +18,7 @@ public class Bienvenido extends javax.swing.JFrame {
     public Bienvenido() {
         // checar directorio de datos
         String slice = File.separator;
-        String file_path = System.getProperty("user.dir") + slice + "src" + slice + "temp";
+        String file_path = System.getProperty("user.dir") + slice + "src" + slice + "temp" + slice;
         
         //Verificar si existe la carpeta temp
         if (!new File(file_path).exists()) {

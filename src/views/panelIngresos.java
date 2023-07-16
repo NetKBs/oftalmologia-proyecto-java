@@ -89,9 +89,9 @@ public class panelIngresos extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
     
     public void graficar() {
-        int monto_d = 0;
-        int monto_s = 0;
-        int monto_m = 0;
+        float monto_d = 0;
+        float monto_s = 0;
+        float monto_m = 0;
 
         // Accedemos al archivo de ingresos
         String filePath = System.getProperty("user.dir") + File.separator + "src"
@@ -117,7 +117,7 @@ public class panelIngresos extends javax.swing.JPanel {
                     continue;  // Salta esta línea vacía
                 }
 
-                int cantidad = Integer.parseInt(split[0]);
+                float cantidad = Float.parseFloat(split[0]);
                 int dia = Integer.parseInt(split[1]);
                 int mes = Integer.parseInt(split[2]);
                 int anio = Integer.parseInt(split[3]);

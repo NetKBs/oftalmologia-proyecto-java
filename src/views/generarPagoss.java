@@ -330,9 +330,17 @@ public class generarPagoss extends javax.swing.JPanel {
                     break;
                 }
             }
-
+            float monto_ = 0;
+            try {
+               monto_ = Float.parseFloat(monto.getText());
+                
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(this, "Valores incorrectos");
+                return;
+            }
+            
             // Verificar
-            Pago pago = new Pago(metodo, moneda, Integer.parseInt(cita_id.getText()), Integer.parseInt(monto.getText()), referencia.getText());
+            Pago pago = new Pago(metodo, moneda, Integer.parseInt(cita_id.getText()), monto_, referencia.getText());
 
             try {
                 if (!pago.procesarPago()) {
