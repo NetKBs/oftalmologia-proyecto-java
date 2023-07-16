@@ -1,5 +1,10 @@
 
 import java.awt.BorderLayout;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.Scanner;
+import java.util.logging.Level;
 import views.EmitirOrden;
 import views.ImprimirHistoria;
 import views.crearCitass;
@@ -12,29 +17,30 @@ import views.proveedores;
 import views.panelRecordatorios;
 import views.resumAct;
 
-
 /**
  *
  * @author Inesc28
  */
 public class AdminPanel extends javax.swing.JFrame {
-    
+
     /**
      * Creates new form pdesign
      */
     public AdminPanel() {
         initComponents();
         setResizable(false);
-        
+
         panelPrincipal panel = new panelPrincipal();
         panel.setSize(859, 515);
         panel.setLocation(0, 0);
-        
+
         contenido.removeAll();
         contenido.add(panel, BorderLayout.CENTER);
         contenido.revalidate();
         contenido.repaint();
         
+        asignarNombre();
+
     }
 
     /**
@@ -292,11 +298,45 @@ public class AdminPanel extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    public void asignarNombre() {
+        // File paths
+        String file_path = System.getProperty("user.dir") + File.separator + "src" + File.separator + "temp";
+        String admin_credenciales = file_path + File.separator + "admin.txt";
+
+        // Para guardar las credenciales obtenidas
+        String[] admin_data_file = null;
+
+        File file = new File(admin_credenciales);
+        if (file.exists()) {
+            try (Scanner scan1 = new Scanner(new File(admin_credenciales))) {
+
+                while (scan1.hasNextLine()) { // Credenciales admin
+                    String linea = scan1.nextLine();
+                    String[] datos = linea.split("\\|");
+                    admin_data_file = datos;
+                }
+            } catch (FileNotFoundException ex) {
+
+            }
+            
+        } else {
+            try {
+                file.createNewFile();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        
+        if(admin_data_file != null) {
+            usuario.setText(admin_data_file[0]);
+        }
+    }
+
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         panelCitas c1 = new panelCitas();
         c1.setSize(859, 515);
         c1.setLocation(0, 0);
-        
+
         contenido.removeAll();
         contenido.add(c1, BorderLayout.CENTER);
         contenido.revalidate();
@@ -307,7 +347,7 @@ public class AdminPanel extends javax.swing.JFrame {
         EmitirOrden o1 = new EmitirOrden();
         o1.setSize(859, 515);
         o1.setLocation(0, 0);
-        
+
         contenido.removeAll();
         contenido.add(o1, BorderLayout.CENTER);
         contenido.revalidate();
@@ -318,7 +358,7 @@ public class AdminPanel extends javax.swing.JFrame {
         generarPagoss P1 = new generarPagoss();
         P1.setSize(859, 515);
         P1.setLocation(0, 0);
-        
+
         contenido.removeAll();
         contenido.add(P1, BorderLayout.CENTER);
         contenido.revalidate();
@@ -329,7 +369,7 @@ public class AdminPanel extends javax.swing.JFrame {
         ImprimirHistoria impri = new ImprimirHistoria();
         impri.setSize(859, 515);
         impri.setLocation(0, 0);
-        
+
         contenido.removeAll();
         contenido.add(impri, BorderLayout.CENTER);
         contenido.revalidate();
@@ -340,7 +380,7 @@ public class AdminPanel extends javax.swing.JFrame {
         resumAct resum = new resumAct();
         resum.setSize(859, 515);
         resum.setLocation(0, 0);
-         
+
         contenido.removeAll();
         contenido.add(resum, BorderLayout.CENTER);
         contenido.revalidate();
@@ -351,7 +391,7 @@ public class AdminPanel extends javax.swing.JFrame {
         proveedores pro1 = new proveedores();
         pro1.setSize(859, 515);
         pro1.setLocation(0, 0);
-        
+
         contenido.removeAll();
         contenido.add(pro1, BorderLayout.CENTER);
         contenido.revalidate();
@@ -362,7 +402,7 @@ public class AdminPanel extends javax.swing.JFrame {
         panelIngresos ingre = new panelIngresos();
         ingre.setSize(859, 515);
         ingre.setLocation(0, 0);
-         
+
         contenido.removeAll();
         contenido.add(ingre, BorderLayout.CENTER);
         contenido.revalidate();
@@ -373,7 +413,7 @@ public class AdminPanel extends javax.swing.JFrame {
         panelEgresos ingre = new panelEgresos();
         ingre.setSize(859, 515);
         ingre.setLocation(0, 0);
-        
+
         contenido.removeAll();
         contenido.add(ingre, BorderLayout.CENTER);
         contenido.revalidate();
@@ -385,7 +425,7 @@ public class AdminPanel extends javax.swing.JFrame {
         panelRecordatorios recordatorio = new panelRecordatorios();
         recordatorio.setSize(859, 515);
         recordatorio.setLocation(0, 0);
-        
+
         contenido.removeAll();
         contenido.add(recordatorio, BorderLayout.CENTER);
         contenido.revalidate();
@@ -393,10 +433,10 @@ public class AdminPanel extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton10ActionPerformed
 
     private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
-       LoginAdmin salida = new LoginAdmin();
-       salida.setVisible(true);
-       this.setVisible(false);
-       
+        LoginAdmin salida = new LoginAdmin();
+        salida.setVisible(true);
+        this.setVisible(false);
+
     }//GEN-LAST:event_jButton11ActionPerformed
 
     /**

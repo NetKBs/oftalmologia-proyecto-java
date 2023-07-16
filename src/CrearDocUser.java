@@ -162,16 +162,11 @@ public class CrearDocUser extends javax.swing.JFrame {
             e.printStackTrace();
         }
 
-        // Si no existen las credenciales de doctor    
-        if (!new File(file_path + File.separator + "admin.txt").exists()) {
-            CrearAdminUser_1 crear_admin = new CrearAdminUser_1();
-            crear_admin.setVisible(true);
+      
 
-        } else { // mandar a loguear
-            LoginAdmin login = new LoginAdmin();
-            login.setVisible(true);
-        }
-
+        Bienvenido main = new Bienvenido();
+        main.setVisible(true);
+        
         this.setVisible(false); // close this window
     }//GEN-LAST:event_jButton1ActionPerformed
 

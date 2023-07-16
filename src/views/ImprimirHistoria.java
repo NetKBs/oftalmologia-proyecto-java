@@ -4,6 +4,11 @@
  */
 package views;
 
+import ClasesGenerales.Cita;
+import ClasesGenerales.Consultorio;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Inesc28
@@ -31,7 +36,7 @@ public class ImprimirHistoria extends javax.swing.JPanel {
         jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
+        input = new javax.swing.JTextField();
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -76,8 +81,8 @@ public class ImprimirHistoria extends javax.swing.JPanel {
             }
         });
 
-        jTextField1.setBackground(new java.awt.Color(0, 255, 255));
-        jTextField1.setForeground(new java.awt.Color(255, 255, 255));
+        input.setBackground(new java.awt.Color(0, 255, 255));
+        input.setForeground(new java.awt.Color(255, 255, 255));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -92,7 +97,7 @@ public class ImprimirHistoria extends javax.swing.JPanel {
                         .addComponent(jLabel1))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(259, 259, 259)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 339, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(input, javax.swing.GroupLayout.PREFERRED_SIZE, 339, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
@@ -106,7 +111,7 @@ public class ImprimirHistoria extends javax.swing.JPanel {
                 .addGap(45, 45, 45)
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(input, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 78, Short.MAX_VALUE)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(62, 62, 62)
@@ -127,15 +132,32 @@ public class ImprimirHistoria extends javax.swing.JPanel {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        String id = input.getText();
+        ArrayList<Cita> citas_activas = Consultorio.instance.getCitas_activas();
+        Cita cita = null;
+
+        // Verificar si existe
+        for (int i = 0; i < citas_activas.size(); i++) {
+            if (citas_activas.get(i).getId() == Integer.parseInt(id)) {
+                cita = citas_activas.get(i);
+                break;
+            }
+        }
+
+        if (cita == null) {
+            JOptionPane.showMessageDialog(null, "No se encontró una cita con ese ID");
+        } else {
+           
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField input;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }

@@ -40,7 +40,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="256" max="-2" attributes="0"/>
-                          <Component id="jTextField1" min="-2" pref="339" max="-2" attributes="0"/>
+                          <Component id="input" min="-2" pref="339" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="331" max="-2" attributes="0"/>
@@ -64,7 +64,7 @@
                   <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
                   <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
-                  <Component id="jTextField1" min="-2" max="-2" attributes="0"/>
+                  <Component id="input" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="84" max="-2" attributes="0"/>
                   <Component id="jButton1" min="-2" pref="51" max="-2" attributes="0"/>
                   <EmptySpace pref="60" max="32767" attributes="0"/>
@@ -85,7 +85,7 @@
             <Property name="text" type="java.lang.String" value="ID Del Paciente :"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField1">
+        <Component class="javax.swing.JTextField" name="input">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="0" type="rgb"/>

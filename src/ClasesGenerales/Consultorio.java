@@ -234,13 +234,13 @@ public class Consultorio {
             while (scan1.hasNextLine()) { // Credenciales admin
                 String linea = scan1.nextLine();
                 String[] datos = linea.split("\\|");
-                String nombres = datos[0].trim().replace(" ", "");
-                String apellidos = datos[1].trim().replace(" ", "");
-                int edad = Integer.parseInt(datos[2].trim().replace(" ", ""));
-                String correo = datos[3].trim().replace(" ", "");
-                String tlfno = datos[4].trim().replace(" ", "");
-                String motivo = datos[5].trim().replace(" ", "");
-                String horario = datos[6].trim().replace(" ", "");
+                String nombres = datos[0].trim();
+                String apellidos = datos[1].trim();
+                int edad = Integer.parseInt(datos[2].trim());
+                String correo = datos[3].trim();
+                String tlfno = datos[4].trim();
+                String motivo = datos[5].trim();
+                String horario = datos[6].trim();
 
                 Paciente paciente = new Paciente(nombres, apellidos, correo, tlfno, edad);
                 Cita cita = new Cita(motivo, horario, paciente);
