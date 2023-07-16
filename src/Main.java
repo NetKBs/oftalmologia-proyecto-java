@@ -22,7 +22,7 @@ public class Main {
         }
         
         if (!adminFile.exists()) { // credenciales de administrador
-            CrearAdminUser crear_admin = new CrearAdminUser();
+            CrearAdminUser_1 crear_admin = new CrearAdminUser_1();
             crear_admin.setVisible(true);
             
         } else if (!docFile.exists()) { // credenciales de doctor

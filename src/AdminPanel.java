@@ -1,5 +1,7 @@
 
 import java.awt.BorderLayout;
+import views.EmitirOrden;
+import views.ImprimirHistoria;
 import views.crearCitass;
 import views.panelCitas;
 import views.generarPagoss;
@@ -16,7 +18,7 @@ import views.resumAct;
  * @author Inesc28
  */
 public class AdminPanel extends javax.swing.JFrame {
-
+    
     /**
      * Creates new form pdesign
      */
@@ -56,7 +58,7 @@ public class AdminPanel extends javax.swing.JFrame {
         jButton9 = new javax.swing.JButton();
         jButton10 = new javax.swing.JButton();
         jButton11 = new javax.swing.JButton();
-        Username = new javax.swing.JLabel();
+        usuario = new javax.swing.JLabel();
         header = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -200,12 +202,12 @@ public class AdminPanel extends javax.swing.JFrame {
         });
         menu.add(jButton11, new org.netbeans.lib.awtextra.AbsoluteConstraints(-130, 640, 400, 50));
 
-        Username.setBackground(new java.awt.Color(0, 0, 0));
-        Username.setFont(new java.awt.Font("Sitka Text", 1, 18)); // NOI18N
-        Username.setForeground(new java.awt.Color(0, 0, 0));
-        Username.setIcon(new javax.swing.ImageIcon(getClass().getResource("/inescoro/icons/user.png"))); // NOI18N
-        Username.setText("jLabel3");
-        menu.add(Username, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 50, 150, 60));
+        usuario.setBackground(new java.awt.Color(0, 0, 0));
+        usuario.setFont(new java.awt.Font("Sitka Text", 1, 18)); // NOI18N
+        usuario.setForeground(new java.awt.Color(0, 0, 0));
+        usuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/inescoro/icons/user.png"))); // NOI18N
+        usuario.setText("jLabel3");
+        menu.add(usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 50, 150, 60));
 
         header.setBackground(new java.awt.Color(153, 255, 255));
         header.setPreferredSize(new java.awt.Dimension(750, 150));
@@ -221,21 +223,21 @@ public class AdminPanel extends javax.swing.JFrame {
         headerLayout.setHorizontalGroup(
             headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(headerLayout.createSequentialGroup()
-                .addGap(38, 38, 38)
+                .addContainerGap(57, Short.MAX_VALUE)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 459, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
+                .addGap(42, 42, 42)
                 .addComponent(jLabel2)
                 .addGap(53, 53, 53))
         );
         headerLayout.setVerticalGroup(
             headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, headerLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(37, 37, 37))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, headerLayout.createSequentialGroup()
                 .addComponent(jLabel2)
                 .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, headerLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(33, 33, 33))
         );
 
         contenido.setBackground(new java.awt.Color(255, 255, 255));
@@ -244,7 +246,7 @@ public class AdminPanel extends javax.swing.JFrame {
         contenido.setLayout(contenidoLayout);
         contenidoLayout.setHorizontalGroup(
             contenidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 860, Short.MAX_VALUE)
         );
         contenidoLayout.setVerticalGroup(
             contenidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -259,9 +261,9 @@ public class AdminPanel extends javax.swing.JFrame {
                 .addComponent(menu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(9, 9, 9)
                 .addComponent(contenido, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(backgroundLayout.createSequentialGroup()
-                .addGap(262, 262, 262)
-                .addComponent(header, javax.swing.GroupLayout.DEFAULT_SIZE, 877, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, backgroundLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(header, javax.swing.GroupLayout.PREFERRED_SIZE, 887, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         backgroundLayout.setVerticalGroup(
             backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -302,7 +304,14 @@ public class AdminPanel extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+        EmitirOrden o1 = new EmitirOrden();
+        o1.setSize(859, 515);
+        o1.setLocation(0, 0);
+        
+        contenido.removeAll();
+        contenido.add(o1, BorderLayout.CENTER);
+        contenido.revalidate();
+        contenido.repaint();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
@@ -317,7 +326,14 @@ public class AdminPanel extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        // TODO add your handling code here:
+        ImprimirHistoria impri = new ImprimirHistoria();
+        impri.setSize(859, 515);
+        impri.setLocation(0, 0);
+        
+        contenido.removeAll();
+        contenido.add(impri, BorderLayout.CENTER);
+        contenido.revalidate();
+        contenido.repaint();
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
@@ -420,7 +436,6 @@ public class AdminPanel extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel Username;
     private javax.swing.JPanel background;
     private javax.swing.JPanel contenido;
     private javax.swing.JPanel header;
@@ -437,5 +452,6 @@ public class AdminPanel extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel menu;
+    private javax.swing.JLabel usuario;
     // End of variables declaration//GEN-END:variables
 }
