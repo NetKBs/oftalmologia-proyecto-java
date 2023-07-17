@@ -15,6 +15,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -251,8 +252,8 @@ public class imprimirInforme extends javax.swing.JPanel {
             Logger.getLogger(imprimirInforme.class.getName()).log(Level.SEVERE, null, ex);
         }
        
-        this.setVisible(false);
-        
+                    JOptionPane.showMessageDialog(this, "Informe éxitoso. Por favor cierre esta ventana", "Warning", JOptionPane.WARNING_MESSAGE);
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
 

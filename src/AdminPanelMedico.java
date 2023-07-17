@@ -1,5 +1,9 @@
 
 import java.awt.BorderLayout;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.Scanner;
 import views.crearCitass;
 import views.panelCitas;
 import views.generarPagoss;
@@ -24,7 +28,7 @@ public class AdminPanelMedico extends javax.swing.JFrame {
     public AdminPanelMedico() {
         initComponents();
         setResizable(false);
-        
+        asignarNombre();
         panelPrincipal panel = new panelPrincipal();
         panel.setSize(859, 515);
         panel.setLocation(0, 0);
@@ -34,6 +38,40 @@ public class AdminPanelMedico extends javax.swing.JFrame {
         contenido.revalidate();
         contenido.repaint();
         
+    }
+    
+    public void asignarNombre() {
+        // File paths
+        String file_path = System.getProperty("user.dir") + File.separator + "src" + File.separator + "temp";
+        String admin_credenciales = file_path + File.separator + "doc.txt";
+
+        // Para guardar las credenciales obtenidas
+        String[] admin_data_file = null;
+
+        File file = new File(admin_credenciales);
+        if (file.exists()) {
+            try (Scanner scan1 = new Scanner(new File(admin_credenciales))) {
+
+                while (scan1.hasNextLine()) { // Credenciales admin
+                    String linea = scan1.nextLine();
+                    String[] datos = linea.split("\\|");
+                    admin_data_file = datos;
+                }
+            } catch (FileNotFoundException ex) {
+
+            }
+            
+        } else {
+            try {
+                file.createNewFile();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        
+        if(admin_data_file != null) {
+            usuario.setText(admin_data_file[0]);
+        }
     }
 
     /**
@@ -51,7 +89,7 @@ public class AdminPanelMedico extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         jButton11 = new javax.swing.JButton();
-        Username = new javax.swing.JLabel();
+        usuario = new javax.swing.JLabel();
         header = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -113,11 +151,11 @@ public class AdminPanelMedico extends javax.swing.JFrame {
         });
         menu.add(jButton11, new org.netbeans.lib.awtextra.AbsoluteConstraints(-150, 340, 420, 50));
 
-        Username.setBackground(new java.awt.Color(0, 0, 0));
-        Username.setFont(new java.awt.Font("Sitka Text", 1, 18)); // NOI18N
-        Username.setIcon(new javax.swing.ImageIcon(getClass().getResource("/inescoro/icons/user.png"))); // NOI18N
-        Username.setText("jLabel3");
-        menu.add(Username, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 50, 150, 60));
+        usuario.setBackground(new java.awt.Color(0, 0, 0));
+        usuario.setFont(new java.awt.Font("Sitka Text", 1, 18)); // NOI18N
+        usuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/inescoro/icons/user.png"))); // NOI18N
+        usuario.setText("jLabel3");
+        menu.add(usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 50, 150, 60));
 
         header.setBackground(new java.awt.Color(153, 255, 255));
         header.setPreferredSize(new java.awt.Dimension(750, 150));
@@ -278,7 +316,6 @@ public class AdminPanelMedico extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel Username;
     private javax.swing.JPanel background;
     private javax.swing.JPanel contenido;
     private javax.swing.JPanel header;
@@ -289,5 +326,6 @@ public class AdminPanelMedico extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel menu;
+    private javax.swing.JLabel usuario;
     // End of variables declaration//GEN-END:variables
 }

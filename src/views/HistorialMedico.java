@@ -4,6 +4,14 @@
  */
 package views;
 
+import ClasesGenerales.Cita;
+import ClasesGenerales.Consultorio;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Cesar
@@ -13,8 +21,11 @@ public class HistorialMedico extends javax.swing.JPanel {
     /**
      * Creates new form HistorialMedico
      */
-    public HistorialMedico() {
+    Cita cita;
+
+    public HistorialMedico(Cita cita) {
         initComponents();
+        this.cita = cita;
     }
 
     /**
@@ -28,20 +39,25 @@ public class HistorialMedico extends javax.swing.JPanel {
 
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        textarea = new javax.swing.JTextArea();
         jButton1 = new javax.swing.JButton();
 
         setPreferredSize(new java.awt.Dimension(859, 515));
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        textarea.setColumns(20);
+        textarea.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        textarea.setRows(5);
+        jScrollPane1.setViewportView(textarea);
 
         jButton1.setBackground(new java.awt.Color(0, 255, 255));
         jButton1.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/inescoro/icons/impri.png"))); // NOI18N
         jButton1.setText("GUARDAR HISTORIAL");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -49,12 +65,12 @@ public class HistorialMedico extends javax.swing.JPanel {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 847, Short.MAX_VALUE)
                 .addContainerGap())
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(303, 303, 303)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(333, Short.MAX_VALUE))
+                .addGap(265, 265, 265))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -78,11 +94,39 @@ public class HistorialMedico extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+
+        String text = textarea.getText();
+        ArrayList<Cita> citas_activas = Consultorio.instance.getCitas_activas();
+
+        for (Cita cita_e : citas_activas) {
+
+            if (cita_e.getId() == cita.getId()) {
+                cita_e.setHistoria(text);
+
+                break;
+            }
+        }
+
+        Consultorio.instance.setCitasActivas(citas_activas);
+        try {
+            Consultorio.instance.guardarCitasArchivo();
+        } catch (IOException ex) {
+            Logger.getLogger(HistorialMedico.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        Consultorio.instance.cargarCitasrArchivo();
+
+        JOptionPane.showMessageDialog(this, "Historia con éxito. Por favor cierre esta ventana", "Warning", JOptionPane.WARNING_MESSAGE);
+
+
+    }//GEN-LAST:event_jButton1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JTextArea textarea;
     // End of variables declaration//GEN-END:variables
 }

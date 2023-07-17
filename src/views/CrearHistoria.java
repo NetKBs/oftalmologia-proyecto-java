@@ -6,7 +6,10 @@ package views;
 
 import ClasesGenerales.Cita;
 import ClasesGenerales.Consultorio;
+import java.awt.Dimension;
 import java.util.ArrayList;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -38,6 +41,7 @@ public class CrearHistoria extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         tabla = new javax.swing.JTable();
         jButton4 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
 
         jPanel3.setBackground(new java.awt.Color(0, 204, 204));
 
@@ -71,21 +75,35 @@ public class CrearHistoria extends javax.swing.JPanel {
             }
         });
 
+        jButton5.setBackground(new java.awt.Color(102, 102, 255));
+        jButton5.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
+        jButton5.setForeground(new java.awt.Color(255, 255, 255));
+        jButton5.setText("CREAR HISTORIA");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jScrollPane1)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(351, 351, 351)
+                .addGap(199, 199, 199)
                 .addComponent(jButton4)
-                .addGap(127, 413, Short.MAX_VALUE))
+                .addGap(198, 198, 198)
+                .addComponent(jButton5)
+                .addContainerGap(232, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addGap(0, 120, Short.MAX_VALUE)
-                .addComponent(jButton4)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton4)
+                    .addComponent(jButton5))
                 .addGap(28, 28, 28)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -105,7 +123,7 @@ public class CrearHistoria extends javax.swing.JPanel {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 899, Short.MAX_VALUE)
+            .addGap(0, 933, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
@@ -126,7 +144,7 @@ public class CrearHistoria extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 899, Short.MAX_VALUE)
+            .addGap(0, 933, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
@@ -156,6 +174,45 @@ public class CrearHistoria extends javax.swing.JPanel {
         tabla.repaint();
     }//GEN-LAST:event_jButton4ActionPerformed
 
+    class MyPopup extends JFrame {
+
+        public MyPopup(JPanel externalPanel) {
+
+            setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+            Dimension preferredSize = externalPanel.getPreferredSize();
+            setSize(preferredSize.width, preferredSize.height);
+            getContentPane().add(externalPanel);
+        }
+    }
+    
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here:
+        
+         int[] rows = tabla.getSelectedRows();
+
+        if (rows.length != 0) { //No vacio
+            
+            Object id = tabla.getValueAt(rows[0], 0);
+            Cita cita_e = null;
+            ArrayList<Cita> citas_activas = Consultorio.instance.getCitas_activas();
+            
+            for (Cita cita: citas_activas) {
+                if (cita.getId() == (int)id) {
+                    cita_e = cita;
+                }
+            }
+            
+            HistorialMedico historial = new HistorialMedico(cita_e);
+            new MyPopup(historial).setVisible(true);
+    
+        } 
+       
+        
+        
+        
+        
+    }//GEN-LAST:event_jButton5ActionPerformed
+
 
     public void updateTable() {
         Consultorio.instance.cargarCitasrArchivo();
@@ -171,22 +228,26 @@ public class CrearHistoria extends javax.swing.JPanel {
         // Agregar nuevas filas 
         for (Cita cita : citas) {
             // Obtener los datos de la fila
-            int id = cita.getId();
-            String motivo = cita.getMotivo();
-            String paciente = cita.getPaciente().getNombres() + " " + cita.getPaciente().getApellidos();
-            String correo = cita.getPaciente().getCorreo();
-            String telefono = cita.getPaciente().getTlfno();
+            if (cita.getHistoria().equals("*")) {
+                 int id = cita.getId();
+                String motivo = cita.getMotivo();
+                String paciente = cita.getPaciente().getNombres() + " " + cita.getPaciente().getApellidos();
+                String correo = cita.getPaciente().getCorreo();
+                String telefono = cita.getPaciente().getTlfno();
             
             
             // Agregar la fila al modelo de datos
             Object[] row = {id, motivo, paciente, correo, telefono};
             model.addRow(row);
+            }
+           
 
         }
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
