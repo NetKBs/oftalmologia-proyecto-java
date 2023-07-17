@@ -4,6 +4,11 @@
  */
 package views;
 
+import ClasesGenerales.Cita;
+import ClasesGenerales.Consultorio;
+import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Cesar
@@ -15,6 +20,7 @@ public class CrearHistoria extends javax.swing.JPanel {
      */
     public CrearHistoria() {
         initComponents();
+        updateTable();
     }
 
     /**
@@ -31,8 +37,6 @@ public class CrearHistoria extends javax.swing.JPanel {
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabla = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
 
         jPanel3.setBackground(new java.awt.Color(0, 204, 204));
@@ -42,11 +46,11 @@ public class CrearHistoria extends javax.swing.JPanel {
 
             },
             new String [] {
-                "ID", "Hora", "Motivo", "Paciente", "Correo", "Teléfono"
+                "ID", "Motivo", "Paciente", "Correo", "Teléfono"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, true, true, true, true, true
+                false, true, true, true, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -56,26 +60,6 @@ public class CrearHistoria extends javax.swing.JPanel {
         tabla.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         tabla.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(tabla);
-
-        jButton1.setBackground(new java.awt.Color(102, 102, 255));
-        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("ELIMINAR");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
-        jButton3.setBackground(new java.awt.Color(102, 102, 255));
-        jButton3.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
-        jButton3.setForeground(new java.awt.Color(255, 255, 255));
-        jButton3.setText("AGREGAR");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
-            }
-        });
 
         jButton4.setBackground(new java.awt.Color(102, 102, 255));
         jButton4.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
@@ -93,22 +77,15 @@ public class CrearHistoria extends javax.swing.JPanel {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jScrollPane1)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(88, 88, 88)
-                .addComponent(jButton3)
-                .addGap(155, 155, 155)
+                .addGap(351, 351, 351)
                 .addComponent(jButton4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 176, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addGap(127, 127, 127))
+                .addGap(127, 413, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addGap(0, 120, Short.MAX_VALUE)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton3)
-                    .addComponent(jButton1)
-                    .addComponent(jButton4))
+                .addComponent(jButton4)
                 .addGap(28, 28, 28)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -167,72 +144,48 @@ public class CrearHistoria extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        int[] rows = tabla.getSelectedRows();
-
-        if (rows.length != 0) { //No vacio
-            int confirmacion = JOptionPane.showConfirmDialog(null, "Seguro quiere eliminar?");
-
-            if (confirmacion == 0) { // Se desea eliminar
-                // Obtenemos valores
-                for (int row : rows) {
-                    // Obtenemos ID
-                    Object id = tabla.getValueAt(row, 0);
-                    // Eliminamos
-                    Consultorio.instance.eliminarCitaPorId((int) id);
-                }
-
-                try { // Guardamos cambios en archivo
-                    Consultorio.instance.guardarCitasArchivo();
-                } catch (IOException ex) {
-                    Logger.getLogger(panelCitas.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                // Refrescamos
-                updateTable();
-            }
-
-        } else { // Si está vacío la seleccion permitir ingresar id manual
-            String id = JOptionPane.showInputDialog("ID a eliminar: ");
-            if (id != null) {
-                boolean resultado = Consultorio.instance.eliminarCitaPorId(Integer.parseInt(id));
-
-                if (resultado == false) {
-                    JOptionPane.showMessageDialog(null, "No se encontró una cita con ese ID");
-                } else {
-                    JOptionPane.showMessageDialog(null, "Elimnacion exitosa");
-                    try { // Guardamos cambios en archivo
-                        Consultorio.instance.guardarCitasArchivo();
-                    } catch (IOException ex) {
-                        Logger.getLogger(panelCitas.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-                    updateTable();
-                }
-
-            }
-
-        }
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
-
-        crearCitass c = new crearCitass();
-        new MyPopup(c).setVisible(true);
-    }//GEN-LAST:event_jButton3ActionPerformed
-
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
-        //updateTable();
-        // Revalidate and repaint the table
+         // TODO add your handling code here:
+         
+       
+         
+         
+        updateTable();
+        // Revalidate and repaint the table    
         tabla.revalidate();
         tabla.repaint();
     }//GEN-LAST:event_jButton4ActionPerformed
 
 
+    public void updateTable() {
+        Consultorio.instance.cargarCitasrArchivo();
+        // Obtenemos datos de las citas
+        ArrayList<Cita> citas = Consultorio.instance.getCitas_activas();
+
+        // Obtener el modelo de datos de la tabla
+        DefaultTableModel model = (DefaultTableModel) tabla.getModel();
+
+        // Limpiar la tabla existente
+        model.setRowCount(0);
+
+        // Agregar nuevas filas 
+        for (Cita cita : citas) {
+            // Obtener los datos de la fila
+            int id = cita.getId();
+            String motivo = cita.getMotivo();
+            String paciente = cita.getPaciente().getNombres() + " " + cita.getPaciente().getApellidos();
+            String correo = cita.getPaciente().getCorreo();
+            String telefono = cita.getPaciente().getTlfno();
+            
+            
+            // Agregar la fila al modelo de datos
+            Object[] row = {id, motivo, paciente, correo, telefono};
+            model.addRow(row);
+
+        }
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;

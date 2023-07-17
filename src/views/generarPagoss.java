@@ -368,15 +368,22 @@ public class generarPagoss extends javax.swing.JPanel {
                     // Verificar si existe
                     for (int i = 0; i < citas_activas.size(); i++) {
                         if (citas_activas.get(i).getId() == Integer.parseInt(cita_id.getText())) {
-                            cita = citas_activas.get(i);
+                            index = i;
                             break;
                         }
                     }
                     
-                    String nombre = cita.getPaciente().getNombres() + " " + cita.getPaciente().getApellidos();
+                    
+                    
+                    String nombre = citas_activas.get(index).getPaciente().getNombres() + " " + citas_activas.get(index).getPaciente().getApellidos();
                     imprimirPago imp = new imprimirPago(cita_id.getText(), nombre, metodo, moneda, monto.getText(), referencia.getText(), formattedDateTime);      
                     new MyPopup(imp).setVisible(true);
-
+                    citas_activas.get(index).setEstado(true);
+                    
+                    Consultorio.instance.setCitasActivas(citas_activas);
+                    Consultorio.instance.guardarCitasArchivo();
+                    Consultorio.instance.cargarCitasrArchivo();
+                    
                 }
             } catch (IOException ex) {
                 Logger.getLogger(generarPagoss.class.getName()).log(Level.SEVERE, null, ex);
@@ -397,7 +404,7 @@ public class generarPagoss extends javax.swing.JPanel {
         public MyPopup(JPanel externalPanel) {
 
             setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-
+            
           // Asignar tamaño fijo
           setSize(680, 725);  
 

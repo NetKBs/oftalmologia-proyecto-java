@@ -264,6 +264,7 @@ public class crearCitass extends javax.swing.JPanel {
             // Utilizar los datos...
             Paciente paciente = new Paciente(nombres.getText(), apellidos.getText(), correo.getText(), telefono.getText(), Integer.parseInt(edad.getText()));
             Cita cita = new Cita(motivo.getText(), horario.getText(), paciente);
+       
             Consultorio.instance.agregarCita(cita);
 
             // limpiamos inputs

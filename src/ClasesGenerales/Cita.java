@@ -9,8 +9,8 @@ public class Cita {
     private String horario; // dd/mm/yy-hh/mm
     private Paciente paciente;
     private boolean estado = false; // pago o no
-    private String historia;
-    private String informe;
+    private String historia = "*";
+    private String informe ="*";
     
     public Cita(String motivo, String horario, Paciente paciente) {
         this.id = nextId;
@@ -19,6 +19,26 @@ public class Cita {
         this.motivo = motivo;
         this.horario = horario;
         this.paciente = paciente;
+    }
+
+    public String getHistoria() {
+        return historia;
+    }
+    
+    public void setNextId (int i) {
+        nextId = i;
+    }
+
+    public void setHistoria(String historia) {
+        this.historia = historia;
+    }
+
+    public String getInforme() {
+        return informe;
+    }
+
+    public void setInforme(String informe) {
+        this.informe = informe;
     }
 
     public int getId() {

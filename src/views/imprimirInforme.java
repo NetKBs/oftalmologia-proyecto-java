@@ -232,8 +232,13 @@ public class imprimirInforme extends javax.swing.JPanel {
        cita.setInforme(input); // set informe
        citas_finalizadas.add(cita);
        Consultorio.instance.setCitas_finalizadas(citas_finalizadas);
+       
+       // Eliminar de citas normales
+       
+       
         try {
             Consultorio.instance.guardarCitasFinalizadas();
+            Consultorio.instance.cargarCitasFinalizadasArchivo();
         } catch (IOException ex) {
             Logger.getLogger(imprimirInforme.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -246,6 +251,8 @@ public class imprimirInforme extends javax.swing.JPanel {
             Logger.getLogger(imprimirInforme.class.getName()).log(Level.SEVERE, null, ex);
         }
        
+        this.setVisible(false);
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
 

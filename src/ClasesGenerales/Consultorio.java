@@ -243,12 +243,12 @@ public class Consultorio {
 
         try (
                 PrintWriter writer = new PrintWriter(file_path)) {
-            for (Cita cita : citas_activas) {
+            for (Cita cita : citas_finalizadas) {
                 // Paciente{nombres, apellidos, edad, correo, telefono}, motivo, horario
                 writer.append(cita.getPaciente().getNombres() + "|" + cita.getPaciente().getApellidos()
                         + "|" + cita.getPaciente().getEdad() + "|" + cita.getPaciente().getCorreo()
                         + "|" + cita.getPaciente().getTlfno() + "|" + cita.getMotivo() + "|"
-                        + cita.getHorario() + "|" + cita.getHistoria() + "|" + cita.getInforme() + "\n");
+                        + cita.getHorario() + "|" + cita.getHistoria() + "|" + cita.getInforme() + "|"+cita.getEstado()+"\n");
             }
             writer.close();
         }
@@ -256,6 +256,11 @@ public class Consultorio {
     }
     
     public void cargarCitasrArchivo() {
+        if (!citas_activas.isEmpty()) {
+            citas_activas.get(0).setNextId(1);
+        }
+        citas_activas.clear();
+        
         String file_path = System.getProperty("user.dir") + File.separator + "src" + File.separator + "temp"
                 + File.separator + "citas.txt";
 
@@ -273,11 +278,13 @@ public class Consultorio {
                 String horario = datos[6].trim();
                 String historia = datos[7].trim();
                 String informe = datos[8].trim();
+                boolean estado = Boolean.parseBoolean(datos[9].trim());
 
                 Paciente paciente = new Paciente(nombres, apellidos, correo, tlfno, edad);
                 Cita cita = new Cita(motivo, horario, paciente);
                 cita.setInforme(informe);
                 cita.setHistoria(historia);
+                cita.setEstado(estado);
                 citas_activas.add(cita);
             }
 
@@ -287,6 +294,10 @@ public class Consultorio {
     }
 
     public void cargarCitasFinalizadasArchivo() {
+        if (!citas_finalizadas.isEmpty()) {
+            citas_finalizadas.get(0).setNextId(1);
+        }
+        citas_finalizadas.clear();
         String file_path = System.getProperty("user.dir") + File.separator + "src" + File.separator + "temp"
                 + File.separator + "citas_finalizadas.txt";
 
@@ -304,10 +315,12 @@ public class Consultorio {
                 String horario = datos[6].trim();
                 String historia = datos[7].trim();
                 String informe = datos[8].trim();
-
+                boolean estado = Boolean.parseBoolean(datos[9].trim());
+                
                 Paciente paciente = new Paciente(nombres, apellidos, correo, tlfno, edad);
                 Cita cita = new Cita(motivo, horario, paciente);
                 cita.setInforme(informe);
+                cita.setEstado(estado);
                 cita.setHistoria(historia);
                 citas_finalizadas.add(cita);
             }
@@ -336,7 +349,7 @@ public class Consultorio {
                 writer.append(cita.getPaciente().getNombres() + "|" + cita.getPaciente().getApellidos()
                         + "|" + cita.getPaciente().getEdad() + "|" + cita.getPaciente().getCorreo()
                         + "|" + cita.getPaciente().getTlfno() + "|" + cita.getMotivo() + "|"
-                        + cita.getHorario() + "\n");
+                        + cita.getHorario() + "|" + cita.getHistoria() + "|" + cita.getInforme() + "|"+cita.getEstado()+"\n");
             }
             writer.close();
         }

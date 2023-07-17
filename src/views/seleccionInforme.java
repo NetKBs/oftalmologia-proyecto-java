@@ -4,6 +4,18 @@
  */
 package views;
 
+import ClasesGenerales.Cita;
+import ClasesGenerales.Consultorio;
+import java.awt.Dimension;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Cesar
@@ -15,6 +27,7 @@ public class seleccionInforme extends javax.swing.JPanel {
      */
     public seleccionInforme() {
         initComponents();
+        updateTable();
     }
 
     /**
@@ -32,6 +45,7 @@ public class seleccionInforme extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         tabla = new javax.swing.JTable();
         jButton4 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
 
         jPanel3.setBackground(new java.awt.Color(0, 204, 204));
 
@@ -40,7 +54,7 @@ public class seleccionInforme extends javax.swing.JPanel {
 
             },
             new String [] {
-                "ID", "Hora", "Motivo", "Paciente", "Correo", "Teléfono"
+                "ID", "Motivo", "Paciente", "Correo", "Teléfono", "Pago"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -65,22 +79,36 @@ public class seleccionInforme extends javax.swing.JPanel {
             }
         });
 
+        jButton5.setBackground(new java.awt.Color(102, 102, 255));
+        jButton5.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
+        jButton5.setForeground(new java.awt.Color(255, 255, 255));
+        jButton5.setText("Crear Informe");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 875, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 897, Short.MAX_VALUE)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(365, 365, 365)
+                .addGap(201, 201, 201)
                 .addComponent(jButton4)
-                .addContainerGap(386, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 248, Short.MAX_VALUE)
+                .addComponent(jButton5)
+                .addGap(167, 167, 167))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addGap(0, 77, Short.MAX_VALUE)
-                .addComponent(jButton4)
-                .addGap(18, 18, 18)
+                .addGap(0, 83, Short.MAX_VALUE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton4)
+                    .addComponent(jButton5))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -143,15 +171,87 @@ public class seleccionInforme extends javax.swing.JPanel {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
-        //updateTable();
+        updateTable();
         // Revalidate and repaint the table
         tabla.revalidate();
         tabla.repaint();
     }//GEN-LAST:event_jButton4ActionPerformed
 
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here:
+        
+         int[] rows = tabla.getSelectedRows();
+
+        if (rows.length != 0) { //No vacio
+            
+            Object id = tabla.getValueAt(rows[0], 0);
+            Cita cita_e = null;
+            ArrayList<Cita> citas_activas = Consultorio.instance.getCitas_activas();
+            
+            for (Cita cita: citas_activas) {
+                if (cita.getId() == (int)id) {
+                    cita_e = cita;
+                }
+            }
+            
+            imprimirInforme imp = new imprimirInforme(cita_e);
+             new MyPopup(imp).setVisible(true);
+
+        } 
+        
+        
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    
+    class MyPopup extends JFrame {
+
+        public MyPopup(JPanel externalPanel) {
+
+            setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+            Dimension preferredSize = externalPanel.getPreferredSize();
+            setSize(preferredSize.width, preferredSize.height);
+            getContentPane().add(externalPanel);
+        }
+    }
+    
+     public void updateTable() {
+        Consultorio.instance.cargarCitasrArchivo();
+        // Obtenemos datos de las citas
+        ArrayList<Cita> citas = Consultorio.instance.getCitas_activas();
+
+        // Obtener el modelo de datos de la tabla
+        DefaultTableModel model = (DefaultTableModel) tabla.getModel();
+
+        // Limpiar la tabla existente
+        model.setRowCount(0);
+
+        // Agregar nuevas filas 
+        for (Cita cita : citas) {
+            // Obtener los datos de la fila
+            boolean estado = cita.getEstado();
+            System.out.println(estado);
+            if (estado== true) {
+                 int id = cita.getId();
+            String motivo = cita.getMotivo();
+            String paciente = cita.getPaciente().getNombres() + " " + cita.getPaciente().getApellidos();
+            String correo = cita.getPaciente().getCorreo();
+            String telefono = cita.getPaciente().getTlfno();
+            
+            
+            // Agregar la fila al modelo de datos
+            Object[] row = {id, motivo, paciente, correo, telefono, "Hecho"};
+            model.addRow(row);
+            }
+            
+           
+
+        }
+    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
